@@ -92,11 +92,12 @@ DATABASES = {
         'USER':'postgres',  
         'PASSWORD':'31891752',
         'DATABASE_PORT':'5432',
-        'HOST':'34.122.193.54'
+        'HOST':'127.0.0.1'
+        
     }
 }
-#'HOST':'127.0.0.1'
-
+#
+#'HOST':'34.122.193.54'
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
