@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %} Inicio de sesion {%endblock%}
+{%block content%}
+{% if form.errors %}
+<div class="alert alert-warning" role="alert">
+ Usuario o contraseña incorrectos vuelva a intentarlo
+</div>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <div class="alert alert-info" role="alert">
+      Inicie sesion para acceder al contenido
+    </div>
+    {% endif %}
+    {% endif %}
+
+
+    <style>
+
+html,
+body {
+  height: 100%;
+}
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+
+    </style>
+<script>
+   
+$(document).ready(function(){
+$('#id_password').addClass('form-control')
+$('#id_username').addClass('form-control')
+$("#id_username").attr("placeholder", "usuario")
+$('#id_password').attr("placeholder", "contraseña")
+
+    });
+</script>
+
+    <form class="form-signin" method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+
+      <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Ecology_symbol.svg"" alt="" width="70" height="145">
+      <h1 class="h3 mb-3 font-weight-normal text-center">Inicio de sesion</h1>
+      <label for=id_username> Usuario</label>
+      {{ form.username }}
+      <label for="id_password">Contraseña</label>
+      {{ form.password }}
+      <p><a href="{% url 'password_reset' %}">¿Contraseña olvidada?</a></p>
+      <div>
+        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Iniciar Sesion" />
+        <input type="hidden" name="next" value="{{ next }}" />
+      </div>
+    
+    </form>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+{%endblock%}
+{%block pie%}
+{%include "footer.html"%}
+{%endblock%}

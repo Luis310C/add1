@@ -1,0 +1,7 @@
+@media screen and (min-width: 768px) {
+    body { padding-top: 100px; }
+}
+
+  .portfolio-item {
+    margin-bottom: 30px;
+  }
