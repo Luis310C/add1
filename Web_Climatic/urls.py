@@ -32,7 +32,6 @@ urlpatterns = [
     path('registrar/',usuarioNuevo.as_view(),name='register'),
     path('eliminar/<slug:url>/',eliminar.as_view(),name='eliminar'),
     path('add/',addArticulo.as_view(),name='add'),
-   # path('registrar/',addUsuario.as_view(),name='registrar/'),
     path('clima/',clima),
     path('accounts/',include('django.contrib.auth.urls')),
     path('articulo/edit/<slug:url>/',Editarticulo.as_view(),name='edit')

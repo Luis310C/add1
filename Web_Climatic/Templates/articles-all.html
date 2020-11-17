@@ -28,7 +28,8 @@
         <div class="card-body">
           <h2 class="card-title">{{articulo.titulo}}</h2>
           <h3 class="card-text">{{articulo.descripcion|safe}}</h3>
-          <a href="{% url 'article-details' articulo.url%}" class="btn btn-primary btn-sm active">Leer Mas &rarr;</a>   {% if user.is_authenticated %}<a  class="btn btn-sm  btn-danger" href="{% url 'eliminar' articulo.url%}"> eliminar</a><a  class="btn btn-sm  btn-secondary" href="{% url 'edit' articulo.url%}"> editar</a>{% endif %} 
+          <a href="{% url 'article-details' articulo.url%}" class="btn btn-primary btn-sm active">Leer Mas &rarr;</a>   {% if user.is_authenticated %}<a  class="btn btn-sm  btn-danger" href="{% url 'eliminar' articulo.url%}"> eliminar</a>
+          <a class="btn btn-sm   btn-dark" href="{% url 'edit' articulo.url%}"> editar</a>{% endif %} 
         </div>
         <div class="card-footer text-muted">
           {{articulo.creacion}}
