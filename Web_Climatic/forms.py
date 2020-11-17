@@ -1,5 +1,6 @@
 from django import forms
 from .models import articulo_Cientifico,Usuario
+from django.forms import Textarea
 
 
 class formulario1(forms.ModelForm):
@@ -12,10 +13,10 @@ class formulario1(forms.ModelForm):
             'titulo':forms.TextInput(attrs={"class":"form-control"}),
             'url':forms.TextInput(attrs={"class":"form-control"}),
             'autor':forms.Select(attrs={"class":"form-control"}),
-            'contenido':forms.Textarea(attrs={"class":"form-control","cols":"45"}),
+            'contenido':Textarea(attrs={"class":"form-control","cols":"65","rows":"20"}),
             'estado':forms.Select(attrs={"class":"form-control"}),
             'image':forms.FileInput(attrs={"class":"form-control"}),
-            'descripcion':forms.TextInput(attrs={"class":"form-control","cols":"45"})
+            'descripcion':Textarea(attrs={"class":"form-control"})
         }
 
 class formulario3(forms.ModelForm):
@@ -28,10 +29,10 @@ class formulario3(forms.ModelForm):
             'titulo':forms.TextInput(attrs={"class":"form-control"}),
             'url':forms.TextInput(attrs={"class":"form-control"}),
             'autor':forms.Select(attrs={"class":"form-control"}),
-            'contenido':forms.Textarea(attrs={"class":"form-control","cols":"45"}),
+            'contenido':Textarea(attrs={"class":"form-control","cols":"65","rows":"20"}),
             'estado':forms.Select(attrs={"class":"form-control"}),
             'image':forms.FileInput(attrs={"class":"form-control"}),
-            'descripcion':forms.TextInput(attrs={"class":"form-control","cols":"45"})
+            'descripcion':Textarea(attrs={"class":"form-control","rows":"20"})
         }
 class formulario2(forms.ModelForm):
     class Meta:

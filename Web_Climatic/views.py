@@ -10,6 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 
+
 class usuarioNuevo(CreateView):
      form_class=UserCreationForm
      template_name='registration/register.html'
@@ -17,10 +18,13 @@ class usuarioNuevo(CreateView):
 class postlista(ListView): 
      queryset=articulo_Cientifico.objects.filter(estado=1)
      template_name='articulos.html'
+     paginate_by = 3
 
 class listaArticulosUsuarios(LoginRequiredMixin,ListView):
      queryset=articulo_Cientifico.objects.all()
      template_name='articles-all.html'
+     paginate_by = 3
+      
 
 
 class eliminar(LoginRequiredMixin,DeleteView):

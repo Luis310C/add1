@@ -46,7 +46,7 @@ class Usuario(models.Model):
 class articulo_Cientifico(models.Model):
      titulo=models.CharField(max_length=200,unique=True)
      url=models.SlugField(max_length=200,unique=True)
-     descripcion=RichTextField()
+     descripcion=models.TextField()
      creacion=models.DateTimeField(auto_now_add=True)
      modificacion=models.DateTimeField(auto_now=True)
      autor=models.ForeignKey(User,on_delete=models.CASCADE,related_name='posteo',null=True)

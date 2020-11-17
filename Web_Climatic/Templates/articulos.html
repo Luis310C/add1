@@ -2,15 +2,138 @@
 {% block title %} Publicaciones {%endblock%}
 {% block content %}
 
- <h1>Contenido</h1>
 
-    {%for articulo in object_list%}
-  <h3><li><a href="{% url 'article-details' articulo.url%}">{{articulo.titulo}}</a> </li></h3> 
-  
-    <h4>{{articulo.descripcion|safe}}</h4>
-    
-    <a href="{% url 'article-details' articulo.url%}" class="btn btn-primary btn-sm active">Leer Mas</a>
+
    
-    {%endfor%}
+    
+      
+        <div class="container">
+
+          
+          <h1 class="mt-4 mb-3">Contenido
+           
+          </h1>
+      
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/">inicio</a>
+            </li>
+            <li class="breadcrumb-item active">Articulos</li>
+          </ol>
+      
+          <div class="row">
+      
+          
+            <div class="col-md-8">
+      
+             
+              {%for articulo in object_list%}
+ <div class="card mb-4">
+                <img class="card-img-top" src="/media/{{articulo.image}}" alt="Card image cap">
+                <div class="card-body">
+                  <h2 class="card-title">{{articulo.titulo}}</h2>
+                  <h3 class="card-text">{{articulo.descripcion|safe}}</h3>
+                  <a href="{% url 'article-details' articulo.url%}" class="btn btn-primary btn-sm active">Leer Mas &rarr;</a>
+                </div>
+                <div class="card-footer text-muted">
+                  {{articulo.creacion}}
+                  <a href="#">{{articulo.autor}}</a>
+                </div>
+              </div>
+              
+     {%endfor%}      
+      
+              
+      
+     <span class="current">
+      Pagina {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+  </span>     
+     <nav >
+              <ul class="pagination">
+               
+                {% if page_obj.has_previous %}
+                <li class="page-item">  <a  class="page-link" href="?page=1">&laquo; Primera</a></li>
+                  <li class="page-item">  <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+                {% endif %}
+        
+                
+        
+                {% if page_obj.has_next %}
+                  <li class="page-item"> <a  class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li> 
+                  <li class="page-item"> <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">ultima &raquo;</a></li> 
+                {% endif %}
+              </ul>
+            </nav>
+             
+         
+        
+      
+            </div>
+      
+            
+            <div class="col-md-4">
+      
+            
+              <div class="card mb-4">
+                <h5 class="card-header">Busqueda</h5>
+                <div class="card-body">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-append">
+                      <button class="btn btn-secondary" type="button">Buscar</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+      
+           
+              <div class="card my-4">
+                <h5 class="card-header">Opciones</h5>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <ul class="list-unstyled mb-0">
+                        <li>
+                          <a href="#">Inicio</a>
+                        </li>
+                        <li>
+                          <a href="#">Preguntas</a>
+                        </li>
+                        <li>
+                          <a href="#">Datos</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-lg-6">
+                      <ul class="list-unstyled mb-0">
+                        <li>
+                          <a href="#">Monitoreo</a>
+                        </li>
+                        <li>
+                          <a href="#">Graficos</a>
+                        </li>
+                        <li>
+                          <a href="#">Otros Recursos</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      
+              
+              <div class="card my-4">
+                <h5 class="card-header">Conciencia</h5>
+                <div class="card-body">
+                  «Nos están fallando a los jóvenes, pero los jóvenes están entendiendo la magnitud de su traición. (…) están pendientes de ustedes y si nos fallan nunca se los perdonaremos». (Greta Thunberg, joven activista sueca)
+                </div>
+              </div>
+      
+            </div>
+      
+          </div>
+        
+      
+        </div>
 
 {% endblock %}
