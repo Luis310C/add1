@@ -5,7 +5,8 @@
  <h1>Contenido</h1>
 
     {%for articulo in object_list%}
-  <h3><li><a href="{% url 'article-details' articulo.url%}">{{articulo.titulo}}</a></li></h3>
+  <h3><li><a href="{% url 'article-details' articulo.url%}">{{articulo.titulo}}</a></li></h3>  
+  <a href="{% url 'edit' articulo.url%}"> edit</a>
   
     <h4>{{articulo.descripcion|safe}}</h4>
     

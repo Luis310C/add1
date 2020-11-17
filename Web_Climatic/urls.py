@@ -31,5 +31,6 @@ urlpatterns = [
     path('add/',addArticulo.as_view(),name='add'),
    # path('registrar/',addUsuario.as_view(),name='registrar/'),
     path('clima/',clima),
-    path('accounts/',include('django.contrib.auth.urls'))
+    path('accounts/',include('django.contrib.auth.urls')),
+    path('articulo/edit/<slug:url>/',Editarticulo.as_view(),name='edit')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

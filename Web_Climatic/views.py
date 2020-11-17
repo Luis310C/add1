@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.db import models
 from django.urls import reverse_lazy
 from .models import *
-from .forms import formulario1,formulario2
+from .forms import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 
@@ -26,6 +26,14 @@ class addArticulo(LoginRequiredMixin,CreateView):
      template_name='formulario.html'
      form_class=formulario1
      #fields='__all__'
+     success_url=reverse_lazy('/articulos')
+
+class Editarticulo(LoginRequiredMixin,UpdateView):
+     model=articulo_Cientifico
+     template_name='modificararticulo.html'
+     slug_field ='url'
+     slug_url_kwarg ='url'
+     form_class=formulario3
      success_url=reverse_lazy('/articulos')
 
 
