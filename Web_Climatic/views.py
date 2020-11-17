@@ -6,6 +6,7 @@ from django.db import models
 from django.urls import reverse_lazy
 from .models import *
 from .forms import formulario1,formulario2
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 
 
@@ -20,7 +21,7 @@ class ArticleDetailView(DetailView):
      slug_url_kwarg = 'url'
 
    
-class addArticulo(CreateView):
+class addArticulo(LoginRequiredMixin,CreateView):
      model=articulo_Cientifico
      template_name='formulario.html'
      form_class=formulario1
@@ -44,9 +45,7 @@ def vistaTabla(request):
 
 def home(request):
      return render(request,'home.html')
-def inicial(request):
-    
-     return render(request,'index.html',{'ruta':'/static/css/main.css'})
+
 
 def despedida(request):
      

@@ -17,18 +17,19 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import urls
+from django.conf.urls import include
 from .views import *
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('inicio/', inicial),
     path('inicio/c/',despedida),
     path('',home),
     path('articulos/',postlista.as_view(),name='/articulos'),
     path('articulo/<slug:url>/',ArticleDetailView.as_view(),name='article-details'),
     path('add/',addArticulo.as_view(),name='add'),
-    path('registrar/',addUsuario.as_view(),name='registrar/'),
+   # path('registrar/',addUsuario.as_view(),name='registrar/'),
     path('clima/',clima),
-    
+    path('accounts/',include('django.contrib.auth.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

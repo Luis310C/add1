@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'Web_Climatic.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Proyecto',
+        'NAME': 'intento',
         'USER':'postgres',  
         'PASSWORD':'31891752',
         'DATABASE_PORT':'5432',

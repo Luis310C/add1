@@ -12,7 +12,7 @@
     <p>Your account doesn't have access to this page. To proceed,
     please login with an account that has access.</p>
     {% else %}
-    <p>Please login to see this page.</p>
+    <p>Por favor inicie sesion para acceder al contenido</p>
     {% endif %}
     {% endif %}
 
@@ -50,13 +50,14 @@ $('#id_password').addClass('form-control')
 $('#id_username').addClass('form-control')
 $("#id_username").attr("placeholder", "usuario")
 $('#id_password').attr("placeholder", "contraseña")
-$('body').css("background-image","url('/static/images/earth.webp')")
+
     });
 </script>
 
     <form class="form-signin" method="post" action="{% url 'login' %}">
         {% csrf_token %}
-      <img  class="mb-3"src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Ecology_symbol.svg" alt="" width="40" height="40">
+
+      <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Ecology_symbol.svg"" alt="" width="70" height="145">
       <h1 class="h3 mb-3 font-weight-normal text-center">Inicio de sesion</h1>
       <label for=id_username> Usuario</label>
       {{ form.username }}
@@ -67,8 +68,15 @@ $('body').css("background-image","url('/static/images/earth.webp')")
         <input type="submit" class="btn btn-lg btn-primary btn-block" value="Iniciar Sesion" />
         <input type="hidden" name="next" value="{{ next }}" />
       </div>
-      <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
+    
     </form>
 
-
+<br>
+<br>
+<br>
+<br>
+<br>
+{%endblock%}
+{%block pie%}
+{%include "footer.html"%}
 {%endblock%}

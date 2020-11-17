@@ -10973,3 +10973,6 @@ a.text-dark:hover, a.text-dark:focus {
 .list-group-item-action .list-group-item-heading {
   color: #fff;
 }
+form label{
+  color: #fff;
+}

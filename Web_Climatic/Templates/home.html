@@ -6,24 +6,11 @@
 {%block slid%}
 <style>
 
-.carousel {
-  background:#007aeb;
-}
-
-
-.carousel-item .img-fluid {
-  width:100%;
-}
-
-
-.carousel-item a {
-  display: block;
-  width:100%;
-}
-
 
 
 </style>
+
+
 <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
       <ol class="carousel-indicators">
           <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -32,7 +19,7 @@
       </ol>
       <div class="carousel-inner" role="listbox">
           <div class="carousel-item active">
-              <a href="https://bootstrapcreative.com/">
+              <a href="">
                 
                    <picture>
                     <source srcset="/static/images/esmog.jpg" media="(min-width: 1400px)">
@@ -104,6 +91,8 @@
 <div class="container-fluid text-center">
     <p>Cada día, en diferentes puntos de la geografía mundial, el planeta nos manda mensajes sobre las enormes transformaciones que está sufriendo: desde cambiantes pautas meteorológicas que amenazan la producción de alimentos; hasta el aumento del nivel del mar que incrementa el riesgo de inundaciones catastróficas.</p>
 </div>
+
+
  {%endblock%}
  {% block content %}
  {%include "p.html" %}

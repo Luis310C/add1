@@ -11064,3 +11064,6 @@ legend {
 .popover-title {
   border-bottom: none;
 }
+form label{
+  color: #fff;
+}

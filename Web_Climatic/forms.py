@@ -20,13 +20,13 @@ class formulario1(forms.ModelForm):
 class formulario2(forms.ModelForm):
     class Meta:
         model=Usuario
-        fields=('Id_Usuario','Nombre','Email','rol','contasena','Estilo')
+        fields=('Nombre','rol','Estilo')
         widgets={
-            'Id_Usuario':forms.TextInput(attrs={"class":"form-control","type":"number"}),
+            
             'Nombre':forms.TextInput(attrs={"class":"form-control"}),
-            'email':forms.EmailInput(attrs={"class":"form-control"}),
+           
             'rol':forms.Select(attrs={"class":"form-control"}),
-            'contasena':forms.PasswordInput(attrs={"class":"form-control","cols":"45"}),
+           
             'Estilo':forms.Select(attrs={"class":"form-control"}),
             
         }

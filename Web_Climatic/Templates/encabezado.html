@@ -11,8 +11,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<link  id="tema" rel="stylesheet" href="/static/css/Yeti/bootstrap.css" media="screen">
 
+{% if user.is_authenticated %}
+<link  id="tema" rel="stylesheet" href="/static/css/Yeti/bootstrap.css" media="screen">
+{% else %}
+<link  id="tema" rel="stylesheet" href="/static/css/Darkly/bootstrap.css" media="screen">
+{% endif %} 
 <script>
 
     
