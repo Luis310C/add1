@@ -14,6 +14,18 @@ class postlista(ListView):
      queryset=articulo_Cientifico.objects.filter(estado=1)
      template_name='articulos.html'
 
+class listaArticulosUsuarios(LoginRequiredMixin,ListView):
+     queryset=articulo_Cientifico.objects.all()
+     template_name='articles-all.html'
+
+
+class eliminar(LoginRequiredMixin,DeleteView):
+     model=articulo_Cientifico
+     template_name='deleteArticulo.html'
+     slug_field ='url'
+     slug_url_kwarg = 'url'
+     success_url=reverse_lazy('/articulos')
+
 class ArticleDetailView(DetailView):
      model=articulo_Cientifico
      template_name='article_details.html'

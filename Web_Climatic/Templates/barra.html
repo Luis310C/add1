@@ -54,6 +54,8 @@
             {{user.get_username }}
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+            <a class="nav-link" href="/add">Añadir articulo</a>
+            <a class="nav-link" href="/articulos-all">Editar Articulo</a>
             <a class="nav-link" href="{% url 'logout'%}?next={{request.path}}">Cerrar Sesion</a>
            </div>
            {% else %}
