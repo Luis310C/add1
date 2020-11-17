@@ -29,6 +29,7 @@ urlpatterns = [
     path('articulos/',postlista.as_view(),name='/articulos'),
     path('articulos-all/',listaArticulosUsuarios.as_view(),name='articulos-all'),
     path('articulo/<slug:url>/',ArticleDetailView.as_view(),name='article-details'),
+    path('registrar/',usuarioNuevo.as_view(),name='register'),
     path('eliminar/<slug:url>/',eliminar.as_view(),name='eliminar'),
     path('add/',addArticulo.as_view(),name='add'),
    # path('registrar/',addUsuario.as_view(),name='registrar/'),

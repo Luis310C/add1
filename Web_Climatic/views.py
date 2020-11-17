@@ -6,10 +6,14 @@ from django.db import models
 from django.urls import reverse_lazy
 from .models import *
 from .forms import *
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 
-
+class usuarioNuevo(CreateView):
+     form_class=UserCreationForm
+     template_name='registration/register.html'
+     success_url=reverse_lazy('login')
 class postlista(ListView): 
      queryset=articulo_Cientifico.objects.filter(estado=1)
      template_name='articulos.html'

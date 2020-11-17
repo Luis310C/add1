@@ -5,12 +5,12 @@
  <h1>Contenido</h1>
 
     {%for articulo in object_list%}
-  <h3><li><a href="{% url 'article-details' articulo.url%}">{{articulo.titulo}}</a>{% if user.is_authenticated %}--<a href="{% url 'edit' articulo.url%}"> editar</a>{% endif %} </li></h3> 
+  <h3><li><a href="{% url 'article-details' articulo.url%}">{{articulo.titulo}}</a> </li></h3> 
   
     <h4>{{articulo.descripcion|safe}}</h4>
     
     <a href="{% url 'article-details' articulo.url%}" class="btn btn-primary btn-sm active">Leer Mas</a>
-    {% if user.is_authenticated %}<a  class="btn btn-sm  btn-danger" href="{% url 'eliminar' articulo.url%}"> eliminar</a>{% endif %} 
+   
     {%endfor%}
 
 {% endblock %}
