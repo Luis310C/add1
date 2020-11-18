@@ -55,7 +55,7 @@ $('#id_password').attr("placeholder", "contraseña")
 
     });
 </script>
-
+<div class="card  mb-3 mx-auto" style = "max-width: 20rem;">
     <form class="form-signin" method="post" action="{% url 'login' %}">
         {% csrf_token %}
 
@@ -72,6 +72,7 @@ $('#id_password').attr("placeholder", "contraseña")
       </div>
     
     </form>
+  </div>
 
 <br>
 <br>

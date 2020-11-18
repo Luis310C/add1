@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %} Nuevo usuario {%endblock%}
 {%block titulo%}
-<h1 class="h3 mb-3 font-weight-normal text-center">Registrar</h1>
+
 {%endblock%} 
 {%block content%}
 <style>
@@ -30,15 +30,20 @@
     
     
         </style>
+        <br>
+        <br>
+        <br>
+ <div class="card  mb-3 mx-auto" style = "max-width: 20rem;">
+  <h1 class="h3 mb-3 font-weight-normal text-center">Registrar</h1>
 <div class="form-group form-signin">
 <form action="" method="post" enctype="multipart/form-data">
     {% load widget_tweaks%}
     {%csrf_token%}
     {{form.as_p}}
     
-<input class="btn btn-secondary" type="submit" value="registrar nuevo"> 
+<input class="btn btn-primary" type="submit" value="registrar nuevo"> 
 </form>
-</div>
+</div></div>
 
 <script>
   
@@ -51,5 +56,11 @@
   $(".form-group ul").text("");
 
 </script>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 {%endblock%}
