@@ -36,7 +36,7 @@
  <div class="card  mb-3 mx-auto" style = "max-width: 20rem;">
   <h1 class="h3 mb-3 font-weight-normal text-center">Registrar</h1>
 <div class="form-group form-signin">
-<form action="" method="post" enctype="multipart/form-data">
+<form action=""  method="post" enctype="multipart/form-data">
     {% load widget_tweaks%}
     {%csrf_token%}
     {{form.as_p}}
@@ -49,12 +49,16 @@
   
 
   $(".helptext").hide();
-  $('input').addClass("form-control");
+
   $("label[for='id_username']").text("Usuario:");
   $("label[for='id_password1']").text("Contraseña:");
   $("label[for='id_password2']").text("Confirmar Contraseña:");
+  $("label[for='id_first_name']").text("Nombre:");
+  $("label[for='id_last_name']").text("Apellido:");
+  
   $(".form-group ul").text("");
-
+  $('#id_rol').addClass("form-control");
+  $('#id_estilo').addClass("form-control");
 </script>
 <br>
 <br>

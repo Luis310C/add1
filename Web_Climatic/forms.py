@@ -1,6 +1,38 @@
 from django import forms
 from .models import articulo_Cientifico,Usuario
 from django.forms import Textarea
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from .models import Estilo,Menu,Usuario
+
+
+class registroForm(UserCreationForm):
+    email=forms.EmailField(widget=forms.EmailInput(attrs={"class":"form-control"}))
+    first_name=forms.CharField(max_length=100,widget=forms.TextInput(attrs={"class":"form-control"}))
+    last_name=forms.CharField(max_length=100,widget=forms.TextInput(attrs={"class":"form-control"}))
+   
+    class Meta:
+        model=User
+        fields=('username','first_name','last_name','email','password1','password2')
+
+    def __init__(self),   
+
+
+     
+        
+  
+       
+
+class registrar(forms.ModelForm):
+    
+    class Meta:
+        model=Usuario
+        fields=('Nombre','rol','Estilo')
+
+
+
+
+
 
 
 class formulario1(forms.ModelForm):

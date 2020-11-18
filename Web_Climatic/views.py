@@ -11,10 +11,19 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 
 
+
 class usuarioNuevo(CreateView):
-     form_class=UserCreationForm
+     form_class=registroForm
+
      template_name='registration/register.html'
      success_url=reverse_lazy('login')
+class estilo(LoginRequiredMixin,CreateView):
+     form_class=registrar
+     template_name='registration/register.html'
+     success_url=reverse_lazy('login')
+
+
+
 class postlista(ListView): 
      queryset=articulo_Cientifico.objects.filter(estado=1)
      template_name='articulos.html'
@@ -72,7 +81,16 @@ def vistaTabla(request):
 
 
 def home(request):
+     
+    
+
      return render(request,'home.html')
+
+def t(request):
+
+    
+    
+     return render(request,'ajax.html')
 
 
 def despedida(request):
