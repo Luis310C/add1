@@ -6,7 +6,7 @@ from django.db import models
 from django.urls import reverse_lazy
 from .models import *
 from .forms import *
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 
@@ -14,13 +14,30 @@ from django.views.generic import ListView,DetailView,CreateView,UpdateView,Delet
 
 class usuarioNuevo(CreateView):
      form_class=registroForm
-
      template_name='registration/register.html'
      success_url=reverse_lazy('login')
 class estilo(LoginRequiredMixin,CreateView):
      form_class=registrar
      template_name='registration/register.html'
      success_url=reverse_lazy('login')
+
+class cambiarestilo(UpdateView):
+     model=Usuario
+     fields='__all__'
+     template_name='registration/edit_profile.html'
+     success_url=reverse_lazy('home')
+     def get_object(self):
+          return self.request.user.usuario
+    
+
+class editprofile(LoginRequiredMixin,UpdateView):
+     form_class=UserChangeForm
+     template_name='registration/edit_profile.html'
+     success_url=reverse_lazy('home')
+     
+     def get_object(self):
+          return self.request.user
+
 
 
 

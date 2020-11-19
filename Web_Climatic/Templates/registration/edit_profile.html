@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %} Nuevo usuario {%endblock%}
+{% block title %}Editar Perfil {%endblock%}
 {%block titulo%}
 
 {%endblock%} 
@@ -59,18 +59,17 @@
       
      
 
- <div class="card  border-secondary  mb-3 mx-auto" style = "max-width: 28rem;">
+ <div class="card  border-secondary  mb-3 mx-auto" style = "max-width: 30rem;">
   <br>
   <br>
-  <h1 class="h3 mb-3 font-weight-normal text-center card-title">Registrar</h1>
+  <h1 class="h3 mb-3 font-weight-normal text-center card-title">Editar Perfil</h1>
 <div class="form-group form-signin">
-<form action=""   class='was-validated' method="post" enctype="multipart/form-data">
-    {% load widget_tweaks%}
+<form action=""   class='was-validated' method="post">
     {%csrf_token%}
     {{form.as_p}}
     <br>
     <br>
-<input class="btn btn-primary " type="submit" value="registrar nuevo"> 
+<input class="btn btn-primary" type="submit" value="Guardar Cambios"> 
 
 <br>
 <br>
@@ -79,21 +78,7 @@
 </form>
 </div></div>
 
-<script>
-  
 
-  $(".helptext").hide();
-  $('input').addClass("form-control");
-  $("label[for='id_username']").text("Usuario:");
-  $("label[for='id_password1']").text("Contraseña:");
-  $("label[for='id_password2']").text("Confirmar Contraseña:");
-  $("label[for='id_first_name']").text("Nombre:");
-  $("label[for='id_last_name']").text("Apellido:");
-  
-  $(".form-group ul").text("");
-  $('#id_rol').addClass("form-control");
-  $('#id_estilo').addClass("form-control");
-</script>
 <br>
 <br>
 <br>

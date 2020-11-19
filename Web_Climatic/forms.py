@@ -16,6 +16,9 @@ class registroForm(UserCreationForm):
         fields=('username','first_name','last_name','email','password1','password2')    
     def __init__(self,*args,**kwargs):
         super(registroForm,self).__init__(*args,**kwargs)
+        self.fields['username'].widget.attrs['class']='form-control'
+        self.fields['password1'].widget.attrs['class']='form-control'
+        self.fields['password2'].widget.attrs['class']='form-control'
         
 
 
@@ -31,6 +34,13 @@ class registrar(forms.ModelForm):
         fields=('Nombre','rol','Estilo')
 
 
+class cambio(forms.ModelForm):
+    
+    class Meta:
+        model=Usuario
+        fields='__all__'
+
+
 
 
 
@@ -41,10 +51,9 @@ class formulario1(forms.ModelForm):
     class Meta:
         model=articulo_Cientifico
 
-        fields=('titulo','url','autor','descripcion','contenido','estado','image')
+        fields=('titulo','autor','descripcion','contenido','estado','image')
         widgets={
             'titulo':forms.TextInput(attrs={"class":"form-control"}),
-            'url':forms.TextInput(attrs={"class":"form-control"}),
             'autor':forms.Select(attrs={"class":"form-control"}),
             'contenido':Textarea(attrs={"class":"form-control","cols":"65","rows":"20"}),
             'estado':forms.Select(attrs={"class":"form-control"}),
@@ -57,10 +66,9 @@ class formulario3(forms.ModelForm):
     class Meta:
         model=articulo_Cientifico
 
-        fields=('titulo','url','autor','descripcion','contenido','estado','image')
+        fields=('titulo','autor','descripcion','contenido','estado','image')
         widgets={
             'titulo':forms.TextInput(attrs={"class":"form-control"}),
-            'url':forms.TextInput(attrs={"class":"form-control"}),
             'autor':forms.Select(attrs={"class":"form-control"}),
             'contenido':Textarea(attrs={"class":"form-control","cols":"65","rows":"20"}),
             'estado':forms.Select(attrs={"class":"form-control"}),

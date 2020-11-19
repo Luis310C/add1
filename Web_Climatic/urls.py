@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.auth import urls
+from django.contrib.auth import urls,views
 from django.conf.urls import include
 from .views import *
 
@@ -25,7 +25,7 @@ from .views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('inicio/c/',despedida),
-    path('',home),
+    path('',home,name='home'),
     path('articulos/',postlista.as_view(),name='/articulos'),
     path('articulos-all/',listaArticulosUsuarios.as_view(),name='articulos-all'),
     path('articulo/<slug:url>/',ArticleDetailView.as_view(),name='article-details'),
@@ -35,6 +35,9 @@ urlpatterns = [
     path('clima/',clima),
     path('t/',t),
     path('user/estilo',estilo.as_view(),name='personalizar'),
+    path('user/edit',editprofile.as_view(),name='edit'),
     path('accounts/',include('django.contrib.auth.urls')),
-    path('articulo/edit/<slug:url>/',Editarticulo.as_view(),name='edit')
+    path('articulo/edit/<slug:url>/',Editarticulo.as_view(),name='edit'),
+    path('password/',views.PasswordChangeView.as_view()),
+    path('cambiar/',cambiarestilo.as_view(),name='edit-estilo')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
