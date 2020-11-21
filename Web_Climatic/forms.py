@@ -38,7 +38,14 @@ class cambio(forms.ModelForm):
     
     class Meta:
         model=Usuario
-        fields='__all__'
+        fields=['rol','Estilo']
+        widgets={
+            'rol':forms.Select(attrs={"class":"form-control"}),
+            'Estilo':forms.Select(attrs={"class":"form-control"}),
+
+
+
+        }
 
 
 
