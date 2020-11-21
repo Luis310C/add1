@@ -4,7 +4,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
   <div class="container">
   
-  <a class="navbar-brand" href="/">Cambio Climatico
+  <a class="navbar-brand" href="{% url 'home'%}">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Ecology_symbol.svg" width="30" height="30" alt="">
+    Cambio Climatico
+   
+
   
 
 </a>
@@ -43,7 +47,7 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
             <a class="dropdown-item" href="#">Predicciones</a>
             <a class="dropdown-item" href="#">Modelos</a>
-            <a class="dropdown-item" href="#">FAQ</a>
+            <a class="dropdown-item" href="{% url 'preguntas'%}">FAQ</a>
             <a class="dropdown-item" href="#">Documentacion y referencias</a>
             <a class="dropdown-item" href="#">Impacto economico</a>
           </div>
@@ -63,7 +67,7 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
             <a class="dropdown-item" href="{% url 'login'%}?next={{request.path}}">Iniciar Sesion</a>
-            <a class="dropdown-item" href="/registrar/">Registrar</a> 
+            <a class="dropdown-item" href="{% url 'register'%}">Registrar</a> 
           </div>
            {% endif %} 
           </li>

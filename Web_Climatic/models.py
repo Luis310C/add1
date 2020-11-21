@@ -19,7 +19,12 @@ class Menu(models.Model):
    def __str__(self):
       return self.Nombre_Menu
 
-
+class faqs(models.Model):
+     Codigo_pregunta=models.BigAutoField(primary_key=True,null=False,blank=False)
+     Pregunta=models.CharField(max_length=150,unique=True)
+     respuesta=models.TextField()
+     def __str__(self):
+          return self.Pregunta
 
 
 class OpcionesMenu(models.Model):

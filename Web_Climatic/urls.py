@@ -33,11 +33,12 @@ urlpatterns = [
     path('eliminar/<slug:url>/',eliminar.as_view(),name='eliminar'),
     path('add/',addArticulo.as_view(),name='add'),
     path('clima/',clima),
-    path('t/',t),
+    path('about/',about,name='acercade'),
     path('user/estilo',estilo.as_view(),name='personalizar'),
     path('user/edit',editprofile.as_view(),name='edit'),
     path('accounts/',include('django.contrib.auth.urls')),
     path('articulo/edit/<slug:url>/',Editarticulo.as_view(),name='edit'),
     path('password/',views.PasswordChangeView.as_view()),
-    path('cambiar/',cambiarestilo.as_view(),name='edit-estilo')
+    path('cambiar/',cambiarestilo.as_view(),name='edit-estilo'),
+    path('preguntas/',preguntas.as_view(),name='preguntas')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

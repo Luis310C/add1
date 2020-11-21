@@ -1,0 +1,39 @@
+
+{% extends "base.html" %}
+{% block title %}Preguntas Frecuentes{%endblock%}
+{% block content %}
+
+
+
+
+    <h1 class="mt-4 mb-3">Preguntas Frecuentes
+      <small>Cambio Climatico</small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="{% url 'home'%}" >Inicio</a>
+      </li>
+      <li class="breadcrumb-item active">FAQ</li>
+    </ol>
+    {%for faq in object_list%}
+    <div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="card">
+        <div class="card-header" role="tab" >
+          <h5 class="mb-0">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseT{{faq.Codigo_pregunta}}" aria-expanded="false" aria-controls="collapseTcollapseT{{faq.Codigo_pregunta}}" >{{faq.Pregunta}}</a>
+          </h5>
+        </div>
+        <div id="collapseT{{faq.Codigo_pregunta}}" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="card-body">
+            {{faq.respuesta}}
+          </div>
+        </div>
+      </div>
+    </div>
+    {%endfor%}      
+
+
+
+  </div>
+{%endblock%}

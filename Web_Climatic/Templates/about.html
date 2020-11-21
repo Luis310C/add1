@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %} Acerca de {%endblock%}
+{%block content%}
+<h1 class="mt-4 mb-3">Acerca de
+    <small>Desarrollo Web Climatic </small>
+  </h1>
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="{% url 'home'%}">Inicio</a>
+    </li>
+    <li class="breadcrumb-item active">Acerca de</li>
+  </ol>
+
+
+  <div class="row">
+    <div class="col-lg-6">
+      <img class="card-img-top" src="/static/images/django_1.png" >
+    </div>
+    <div class="col-lg-6">
+      <h2>Desarrollo de la aplicacion</h2>
+      <p>La aplicacion fue desarrollada utilizando el framework Python Django ,la gestion de dependencias se manejo utilizando 
+         Pip .</p>
+      <p>Se utiliza como entorno de desarrollo Debian 10 y como entorno de produccion Ubuntu 20.04</p>
+      <p>Se configuro un servidor apache  https dentro de Google Cloud Plataform y se utiliza un script para sincronizar la áplicacion con la rama Dev de un repositorio alojado en Github</p>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  {%endblock%}

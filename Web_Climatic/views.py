@@ -16,14 +16,18 @@ class usuarioNuevo(CreateView):
      form_class=registroForm
      template_name='registration/register.html'
      success_url=reverse_lazy('login')
+
+
 class estilo(LoginRequiredMixin,CreateView):
      form_class=registrar
      template_name='registration/register.html'
      success_url=reverse_lazy('login')
+   
 
-class cambiarestilo(UpdateView):
+
+class cambiarestilo(LoginRequiredMixin,UpdateView):
      model=Usuario
-     fields='__all__'
+     form_class=cambio
      template_name='registration/edit_profile.html'
      success_url=reverse_lazy('home')
      def get_object(self):
@@ -31,13 +35,16 @@ class cambiarestilo(UpdateView):
     
 
 class editprofile(LoginRequiredMixin,UpdateView):
-     form_class=UserChangeForm
+     form_class=edit_profile
      template_name='registration/edit_profile.html'
      success_url=reverse_lazy('home')
      
      def get_object(self):
           return self.request.user
 
+class preguntas(ListView):
+     queryset=faqs.objects.all()
+     template_name='faqs.html'
 
 
 
@@ -59,6 +66,7 @@ class eliminar(LoginRequiredMixin,DeleteView):
      slug_field ='url'
      slug_url_kwarg = 'url'
      success_url=reverse_lazy('/articulos')
+     
 
 class ArticleDetailView(DetailView):
      model=articulo_Cientifico
@@ -103,11 +111,11 @@ def home(request):
 
      return render(request,'home.html')
 
-def t(request):
+def about(request):
 
     
     
-     return render(request,'ajax.html')
+     return render(request,'about.html')
 
 
 def despedida(request):
