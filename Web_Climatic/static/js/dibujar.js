@@ -1,20 +1,19 @@
 const xlabels=[];
 const ytemps=[];
 
-
 async function chartIt(){
 await  get_Data();
-const ctx = document.getElementById('chart').getContext('2d');
+const ctx = document.getElementById('co2').getContext('2d');
+const chart = new Chart(ctx, {
 
- const chart = new Chart(ctx, {
-
- type: 'line',
+ type: 'bar',
  data: {
      labels: xlabels,
      datasets: [{
-         label: 'Concentracion Co2',
+         label: 'Concentracion atmosferica Co2',
        
          borderColor: 'rgb(30, 30, 130)',
+         backgroundColor:'rgb(30, 30, 130)',
          data: ytemps
      }]
  },
