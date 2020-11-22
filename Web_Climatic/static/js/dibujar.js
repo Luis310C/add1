@@ -104,3 +104,51 @@ async function get_Data()
          
           }
           dib();
+
+
+          const xaños=[];
+          const ytemper=[];
+          
+          async function dib(){
+          await get_temp();
+          const ctx1 = document.getElementById('temp').getContext('2d');
+          const chart1 = new Chart(ctx1, {
+          
+           type: 'bar',
+           data: {
+               labels: xaños,
+               datasets: [{
+                   label: 'Temperatura media global(Durante los ultimos dos milenios)',
+                 
+                   borderColor: 'rgb(30, 30, 130)',
+                   backgroundColor:'rgb(30, 30, 130)',
+                   data: ytemper
+               }]
+           },
+          
+          
+           options: {}
+          });
+           }
+          
+          
+          
+          async function get_temp()
+               {
+                   const response=await fetch('/static/datasets/td.csv');
+                   const  data=await response.text();
+                  
+                   const table=data.split('\n').slice(1);
+               
+                   table.forEach(row=>{
+                       const columns=row.split(',');
+                       const year=columns[0];
+                       xaños.push(year);
+                       const temp=columns[1];
+                       ytemper.push(temp);
+                      
+          
+                   });
+              
+               }
+               dib();
