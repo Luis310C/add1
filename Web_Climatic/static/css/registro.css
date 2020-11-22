@@ -1,10 +1,4 @@
-html,
-    body {
-    height: 100%;
-    background: linear-gradient(-45deg, #c51f19, rgb(60, 148, 231), #23a6d5, #1562c7);
-    background-size: 400% 400%;
-    animation: gradient 9s ease infinite;
-    }
+
     .form-signin {
       width: 100%;
       max-width: 330px;
@@ -22,16 +16,3 @@ html,
     .form-signin .form-control:focus {
       z-index: 2;
     }
-
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
