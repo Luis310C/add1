@@ -209,4 +209,52 @@ async function get_Data()
                         });
                    
                     }
-                    dibuj();               
+                    dibuj();        
+                    
+                    
+                    const x2=[];
+                    const y2=[];
+                    
+                    async function dibuja(){
+                    await get_mar18();
+                    const ctx2 = document.getElementById('mar18').getContext('2d');
+                    const chart2 = new Chart(ctx2, {
+                    
+                     type: 'bar',
+                     data: {
+                         labels: x2,
+                         datasets: [{
+                             label: 'Nivel del mar (1880-2015)',
+                           
+                             borderColor: 'rgb(60,160,140)',
+                            
+                             data: y2
+                         }]
+                     },
+                    
+                    
+                     options: {}
+                    });
+                     }
+                    
+                    
+                    
+                    async function get_mar18()
+                         {
+                             const response=await fetch('/static/datasets/mar1880-2015.csv');
+                             const  data=await response.text();
+                            
+                             const table=data.split('\n').slice(1);
+                         
+                             table.forEach(row=>{
+                                 const columns=row.split(',');
+                                 const year=columns[0];
+                                 x2.push(year);
+                                 const temp=columns[1];
+                                 y2.push(temp);
+                                
+                                 
+                             });
+                        
+                         }
+                         dibuja(); 
