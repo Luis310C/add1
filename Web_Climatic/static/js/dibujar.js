@@ -106,10 +106,13 @@ async function get_Data()
           dib();
 
 
-          const xaños=[];
-          const ytemper=[];
+
+
+
+          const x=[];
+          const y=[];
           
-          async function dib(){
+          async function dibu(){
           await get_temp();
           const ctx1 = document.getElementById('temp').getContext('2d');
           const chart1 = new Chart(ctx1, {
@@ -151,4 +154,4 @@ async function get_Data()
                    });
               
                }
-               dib();
+               dibu();
