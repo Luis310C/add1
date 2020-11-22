@@ -113,19 +113,19 @@ async function get_Data()
           const y=[];
           
           async function dibu(){
-          await get_temp();
-          const ctx1 = document.getElementById('temp').getContext('2d');
-          const chart1 = new Chart(ctx1, {
+          await get_temp1();
+          const ctx2 = document.getElementById('temp2').getContext('2d');
+          const chart2 = new Chart(ctx2, {
           
-           type: 'bar',
+           type: 'line',
            data: {
-               labels: xaños,
+               labels: x,
                datasets: [{
-                   label: 'Temperatura media global(Durante los ultimos dos milenios)',
+                   label: 'Temperatura Media global(1880-2019)',
                  
-                   borderColor: 'rgb(30, 30, 130)',
-                   backgroundColor:'rgb(30, 30, 130)',
-                   data: ytemper
+                   borderColor: 'rgb(60,158,163)',
+                  
+                   data: y
                }]
            },
           
@@ -136,9 +136,9 @@ async function get_Data()
           
           
           
-          async function get_temp()
+          async function get_temp1()
                {
-                   const response=await fetch('/static/datasets/td.csv');
+                   const response=await fetch('/static/datasets/1880-2019.csv');
                    const  data=await response.text();
                   
                    const table=data.split('\n').slice(1);
@@ -146,12 +146,67 @@ async function get_Data()
                    table.forEach(row=>{
                        const columns=row.split(',');
                        const year=columns[0];
-                       xaños.push(year);
+                       x.push(year);
                        const temp=columns[1];
-                       ytemper.push(temp);
+                       y.push(temp);
                       
           
                    });
               
                }
                dibu();
+
+
+
+
+
+
+
+
+
+               const x1=[];
+               const y1=[];
+               
+               async function dibuj(){
+               await get_mar();
+               const ctx2 = document.getElementById('mar').getContext('2d');
+               const chart2 = new Chart(ctx2, {
+               
+                type: 'line',
+                data: {
+                    labels: x1,
+                    datasets: [{
+                        label: 'Nivel del mar (1993-2015)',
+                      
+                        borderColor: 'rgb(60,160,140)',
+                       
+                        data: y1
+                    }]
+                },
+               
+               
+                options: {}
+               });
+                }
+               
+               
+               
+               async function get_mar()
+                    {
+                        const response=await fetch('/static/datasets/nivelmar.csv');
+                        const  data=await response.text();
+                       
+                        const table=data.split('\n').slice(1);
+                    
+                        table.forEach(row=>{
+                            const columns=row.split(',');
+                            const year=columns[0];
+                            x1.push(year);
+                            const temp=columns[1];
+                            y1.push(temp);
+                           
+                            
+                        });
+                   
+                    }
+                    dibuj();               
