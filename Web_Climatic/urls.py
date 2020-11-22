@@ -40,5 +40,6 @@ urlpatterns = [
     path('articulo/edit/<slug:url>/',Editarticulo.as_view(),name='edit'),
     path('password/',views.PasswordChangeView.as_view()),
     path('cambiar/',cambiarestilo.as_view(),name='edit-estilo'),
-    path('preguntas/',preguntas.as_view(),name='preguntas')
+    path('preguntas/',preguntas.as_view(),name='preguntas'),
+    path('intento/',ret,name='asc')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

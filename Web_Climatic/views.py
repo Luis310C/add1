@@ -122,3 +122,6 @@ def despedida(request):
      
      return render(request,'vista1.html')
 
+def ret(request):
+     return render(request,'charts.html')
+
