@@ -1,78 +1,114 @@
 
-(function ($) {
-    "use strict";
-
-    /*==================================================================
-    [ Validate after type ]*/
-    $('.validate-input .input100').each(function(){
-        $(this).on('blur', function(){
-            if(validate(this) == false){
-                showValidate(this);
-            }
-            else {
-                $(this).parent().addClass('true-validate');
-            }
-        })    
-    })
+var app = new Vue({
+    el: "#app",
+    data: {
+      chart: null,
+      city: "",
+      dates: [],
+      temps: [],
+      loading: false,
+      errored: false
+    },
+    methods: {
+      getData: function() {
+        this.loading = true;
   
+        if (this.chart != null) {
+          this.chart.destroy();
+        }
   
-    /*==================================================================
-    [ Validate ]*/
-    var input = $('.validate-input .input100');
-
-    $('.validate-form').on('submit',function(){
-        var check = true;
-
-        for(var i=0; i<input.length; i++) {
-            if(validate(input[i]) == false){
-                showValidate(input[i]);
-                check=false;
+        axios
+          .get("https://api.openweathermap.org/data/2.5/forecast", {
+            params: {
+              q: this.city,
+              units: "imperial",
+              appid: "fd3150a661c1ddc90d3aefdec0400de4"
             }
-        }
-
-        return check;
-    });
-
-
-    $('.validate-form .input100').each(function(){
-        $(this).focus(function(){
-           hideValidate(this);
-           $(this).parent().removeClass('true-validate');
-        });
-    });
-
-     function validate (input) {
-        if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-            if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-                return false;
-            }
-        }
-        else {
-            if($(input).val().trim() == ''){
-                return false;
-            }
-        }
-    }
-
-    function showValidate(input) {
-        var thisAlert = $(input).parent();
-
-        $(thisAlert).addClass('alert-validate');
-
-        $(thisAlert).append('<span class="btn-hide-validate">&#xf135;</span>')
-        $('.btn-hide-validate').each(function(){
-            $(this).on('click',function(){
-               hideValidate(this);
+          })
+          .then(response => {
+            this.dates = response.data.list.map(list => {
+              return list.dt_txt;
             });
-        });
+  
+            this.temps = response.data.list.map(list => {
+              return list.main.temp;
+            });
+  
+            var ctx = document.getElementById("myChart");
+            this.chart = new Chart(ctx, {
+              type: "line",
+              data: {
+                labels: this.dates,
+                datasets: [
+                  {
+                    label: "Avg. Temp",
+                    backgroundColor: "rgba(54, 162, 235, 0.5)",
+                    borderColor: "rgb(54, 162, 235)",
+                    fill: false,
+                    data: this.temps
+                  }
+                ]
+              },
+              options: {
+                title: {
+                  display: true,
+                  text: "Monitero y prediccion fluctuacion temperatura"
+                },
+                tooltips: {
+                  callbacks: {
+                    label: function(tooltipItem, data) {
+                      var label =
+                        data.datasets[tooltipItem.datasetIndex].label || "";
+  
+                      if (label) {
+                        label += ": ";
+                      }
+  
+                      label += Math.floor(tooltipItem.yLabel);
+                      return label + "°F";
+                    }
+                  }
+                },
+                scales: {
+                  xAxes: [
+                    {
+                      type: "time",
+                      time: {
+                        unit: "hour",
+                        displayFormats: {
+                          hour: "M/DD @ hA"
+                        },
+                        tooltipFormat: "MMM. DD @ hA"
+                      },
+                      scaleLabel: {
+                        display: true,
+                        labelString: "Fecha/Hora"
+                      }
+                    }
+                  ],
+                  yAxes: [
+                    {
+                      scaleLabel: {
+                        display: true,
+                        labelString: "Temperatura (°F)"
+                      },
+                      ticks: {
+                        callback: function(value, index, values) {
+                          return value + "°F";
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            });
+          })
+          .catch(error => {
+            console.log(error);
+            this.errored = true;
+          })
+          .finally(() => (this.loading = false));
+      }
     }
-
-    function hideValidate(input) {
-        var thisAlert = $(input).parent();
-        $(thisAlert).removeClass('alert-validate');
-        $(thisAlert).find('.btn-hide-validate').remove();
-    }
-    
-    
-
-})(jQuery);
+  });
+  

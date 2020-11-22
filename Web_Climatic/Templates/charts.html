@@ -1,11 +1,13 @@
 
 {% extends "base.html" %}
-{% block title %}Monitoreo{%endblock%}
+{% block title %}Monitoreo señaneles vitales{%endblock%}
   
-
+{%block titulo%}
+<h1>Signos Vitales</h1>
+{%endblock%} 
     {% block content %}
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script src='/static/js/dibujar.js'></script>
+  
     <div class="row my-2">
         <div class="col-md-12">
             <div class="card">
@@ -62,6 +64,22 @@
             </div>
             </div>
     </div>
+    <br>
+    <br>
+    <div class="row my-2">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+      <canvas id='ant'  class='img-responsive' height="100" style="border:1px solid #000000;" ></canvas>
+                </div>
+            </div>
+            </div>
+    </div>
+    <br>
+    <br>
+    {% load static %}
+
+    <script src="{% static '/js/dibujar.js' %}" ></script>
 
     {% endblock %}
    

@@ -4,32 +4,22 @@
 
 {%endblock%} 
 {%block content%}
-<style>
-
-    html,
-    body {
-      height: 100%;
-    }
-    .form-signin {
-      width: 100%;
-      max-width: 330px;
-      padding: 15px;
-      margin: 0 auto;
-    }
-    
-    .form-signin .form-control {
-      position: relative;
-      box-sizing: border-box;
-      height: auto;
-      padding: 10px;
-      font-size: 16px;
-    }
-    .form-signin .form-control:focus {
-      z-index: 2;
-    }
-    
-    
-        </style>
+{% load static %}
+{% if user.is_authenticated %}
+<div class="alert alert-info" role="alert">
+  Antes de registrar una nueva cuenta debe cerrar sesion
+ </div>
+ <div class='card'>
+<a href="{% url 'logout'%}?next={{request.path}}">Cerrar Sesion</a>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% else %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/registro.css' %}" >
         <br>
         <br>
         <br>
@@ -99,6 +89,6 @@
 <br>
 <br>
 <br>
-
+{% endif %} 
 
 {%endblock%}

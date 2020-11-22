@@ -41,5 +41,6 @@ urlpatterns = [
     path('password/',views.PasswordChangeView.as_view()),
     path('cambiar/',cambiarestilo.as_view(),name='edit-estilo'),
     path('preguntas/',preguntas.as_view(),name='preguntas'),
-    path('intento/',ret,name='asc')
+    path('grafico/',ret,name='asc'),
+    path('ciudades/',ciudad,name='porciudades')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

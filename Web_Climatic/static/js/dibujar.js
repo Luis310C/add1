@@ -10,7 +10,7 @@ const chart = new Chart(ctx, {
  data: {
      labels: xlabels,
      datasets: [{
-         label: 'Concentracion atmosferica Co2',
+         label: 'Concentracion atmosferica Co2 mundial',
        
          borderColor: 'rgb(30, 30, 130)',
          backgroundColor:'rgb(30, 30, 130)',
@@ -176,7 +176,7 @@ async function get_Data()
                 data: {
                     labels: x1,
                     datasets: [{
-                        label: 'Nivel del mar (1993-2015)',
+                        label: 'Nivel del mar (variacion en mm)\n(1993-2015)',
                       
                         borderColor: 'rgb(60,160,140)',
                        
@@ -224,9 +224,10 @@ async function get_Data()
                      data: {
                          labels: x2,
                          datasets: [{
-                             label: 'Nivel del mar (1880-2015)',
+                             label: 'Nivel del mar (variacion en mm)(1880-2015)',
                            
-                             borderColor: 'rgb(60,160,140)',
+                             borderColor: 'rgb(30, 30, 130)',
+                            backgroundColor:'rgb(30, 30, 130)',
                             
                              data: y2
                          }]
@@ -258,3 +259,55 @@ async function get_Data()
                         
                          }
                          dibuja(); 
+                
+
+
+
+
+                         const x3=[];
+                         const y3=[];
+                         
+                         async function dibujar(){
+                         await get_hielo();
+                         const ctx2 = document.getElementById('ant').getContext('2d');
+                         const chart2 = new Chart(ctx2, {
+                         
+                          type: 'line',
+                          data: {
+                              labels: x3,
+                              datasets: [{
+                                  label: 'Variacion masa de la antartida desde 2003(en gigatoneladas)',
+                                
+                                  borderColor: 'rgb(30, 80, 130)',
+                                 
+                                 
+                                  data: y3
+                              }]
+                          },
+                         
+                         
+                          options: {}
+                         });
+                          }
+                         
+                         
+                         
+                         async function get_hielo()
+                              {
+                                  const response=await fetch('/static/datasets/hieloantartid.csv');
+                                  const  data=await response.text();
+                                 
+                                  const table=data.split('\n').slice(1);
+                              
+                                  table.forEach(row=>{
+                                      const columns=row.split(',');
+                                      const year=columns[0];
+                                      x3.push(year);
+                                      const temp=columns[1];
+                                      y3.push(temp);
+                                     
+                                      
+                                  });
+                             
+                              }
+                              dibujar(); 

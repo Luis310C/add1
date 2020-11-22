@@ -125,3 +125,6 @@ def despedida(request):
 def ret(request):
      return render(request,'charts.html')
 
+def ciudad(request):
+     return render(request,'predicciones.html')
+
