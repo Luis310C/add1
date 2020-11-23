@@ -48,10 +48,6 @@ def climatic(request):
          else:
               print('error')
      
-     
-        
-
-    
     context = {'weather_data' : weather_data }
     return render(request, 'intex.html',context)
 

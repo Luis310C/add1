@@ -7,8 +7,13 @@
                     Datos Climatologicos
                 </h1>
      
+               
                 
-
+                    
+                      
+                      
+                   
+                    
 
 
                 
@@ -29,23 +34,30 @@
 
 
   
-    
+               
+                  <div class="container">
+                    <div class="row">
                     {% for city_weather in weather_data %}
-                    
-                        
-                                
-                                    <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
-                               
-                            
-                                <div class="content">
-                                    <p>
-                                        <span class="title">{{ city_weather.city }}</span>
-                                        <br>
-                                        <span class="subtitle">{{ city_weather.temperature }}° F</span>
-                                        <br> {{ city_weather.description }}
-                                    </p>
+                          {% if forloop.counter|divisibleby:"4" %}
+                        </div>
+                        <div class="row">
+                            {% endif %}
+                       
+                         
+                             <div class="col-sm">
+                                <div class="card border-primary mb-3" style="max-width: 20rem;">
+                                   <div class="card-header"> <img  src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">{{ city_weather.city }}</div>
+                                    <div class="card-body">
+                                      <h4 class="card-title">{{ city_weather.temperature }}° F</h4>
+                                      <p class="card-text">{{ city_weather.description }}.</p>
+                                    </div>
+                                  </div>
+                                  
+                       
                                 </div>
-                               
                     {% endfor %}
          
+                </div>
+                  
+                  </div>
     {% endblock %}
