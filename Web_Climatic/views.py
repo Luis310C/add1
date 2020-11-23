@@ -17,7 +17,7 @@ class usuarioNuevo(CreateView):
      form_class=registroForm
      template_name='registration/register.html'
      success_url=reverse_lazy('login')
-class ciudadnueva(CreateView):
+class ciudadnueva(LoginRequiredMixin,CreateView):
      form_class=CityForm
      template_name='agregarciudad.html'
      success_url=reverse_lazy('climci')
@@ -72,7 +72,8 @@ class preguntas(ListView):
      queryset=faqs.objects.all()
      template_name='faqs.html'
 
-
+def perfiles(request):
+     return render(request,'accounts_profile.html')
 
 class postlista(ListView): 
      queryset=articulo_Cientifico.objects.filter(estado=1)
