@@ -152,7 +152,8 @@ class addUsuario(CreateView):
       form_class=formulario2
       success_url=reverse_lazy('/articulos')
 
-
+def triple(request):
+     return render(request,'Datos.html')
 
 def vistaTabla(request):
      return render(request,'vistaTabla.html',{'obj':articulo_Cientifico.objects.all()})
@@ -175,4 +176,14 @@ def ret(request):
 
 def ciudadconsulta(request):
      return render(request,'predicciones.html')
+
+def causa(request):
+     return render(request,'causa.html')
+
+def efecto(request):
+     return render(request,'efecto.html')
+
+def  evidencia(request):
+     return render(request,'evidencia.html')
+
 

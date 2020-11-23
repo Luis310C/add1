@@ -47,5 +47,9 @@ urlpatterns = [
     path('agregarciudad/', ciudadnueva.as_view(),name='agregarciudad'),
     path('ciudades/',ciudadconsulta,name='porciudades'),
     path('accounts/profile/',perfiles),
-    path('nueva-pregunta/',registrarPreguntas.as_view(),name='new-faq')
+    path('nueva-pregunta/',registrarPreguntas.as_view(),name='new-faq'),
+    path('triple/',triple,name='triple'),
+    path('evidencia/',evidencia,name='evidencia'),
+    path('causa/',causa,name='causa'),
+    path('efecto/',efecto,name='efecto')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

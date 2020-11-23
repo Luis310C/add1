@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Datos {%endblock%}
+{%block titulo%}
+<H1>Datos</H1>
+{%endblock%} 
+{%block content%}
+<script>
+$(document).ready(function(){
+    $('#sev').click(function(){
+        $.ajax({
+        type: 'GET',
+        url: "{% url 'evidencia'  %}",
+        dataType: "html",
+        success: function(data) {
+            $('#contenido').html(data);
+
+        }
+    });      
+    });
+    $('#cau').click(function(){
+        $.ajax({
+        type: 'GET',
+        url: "{% url 'causa'  %}",
+        dataType: "html",
+        success: function(data) {
+            $('#contenido').html(data);
+
+        }
+    });      
+    });
+    $('#efe').click(function(){
+        $.ajax({
+        type: 'GET',
+        url: "{% url 'efecto'  %}",
+        dataType: "html",
+        success: function(data) {
+            $('#contenido').html(data);
+
+        }
+    });      
+    });
+
+});
+</script>
+<div class="container ">
+    <div class="row">
+        <div class="col-sm">
+            <a id="cau" href="#"><h2> Causas</h2></a>
+          
+
+        </div>
+        <div class="col-sm">
+            <a id="sev" href="#"><h2>Evidencia</h2></a>
+        </div>
+        <div class="col-sm">
+            <a id="efe" href="#"><h2>Efectos</h2></a>  
+        </div>
+        
+    </div>
+   
+</div>
+<div id="contenido" class="row">
+    <div class="container">
+
+   
+        <h1 class="mt-4 mb-3">Datos
+          <small>seleccione una opcion</small>
+        </h1>
+    
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Datos</a>
+          </li>
+        
+        </ol>
+       
+    
+      </div>
+
+</div>
+
+{%endblock%}
