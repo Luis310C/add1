@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %} Nuevo usuario {%endblock%}
+{%block titulo%}
+
+{%endblock%} 
+{%block content%}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/registro.css' %}" >
+<div class='intentod'>
+ <div class="card  border-secondary  mb-3 mx-auto" style = "max-width: 28rem;">
+  <br>
+  <br>
+  <h1 class="h3 mb-3 font-weight-normal text-center card-title">Registrar</h1>
+<div class="form-group form-signin">
+<form action=""   class='was-validated' method="post" enctype="multipart/form-data">
+    {% load widget_tweaks%}
+    {%csrf_token%}
+    {{form.as_p}}
+    <br>
+    <br>
+<button class="btn btn-primary " type="submit" > registrar nuevo
+</button>
+<br>
+<br>
+<br>
+
+</form>
+</div></div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endif %} 
+
+{%endblock%}
