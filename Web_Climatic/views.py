@@ -152,8 +152,7 @@ class addUsuario(CreateView):
       form_class=formulario2
       success_url=reverse_lazy('/articulos')
 
-def clima(request):
-     return render(request,'clima.html')
+
 
 def vistaTabla(request):
      return render(request,'vistaTabla.html',{'obj':articulo_Cientifico.objects.all()})
