@@ -68,7 +68,7 @@ class articulo_Cientifico(models.Model):
           super().save(*args,**kwargs)
 
 class ciudad(models.Model):
-     nombre=models.CharField(max_length=40)
+     nombre=models.CharField(max_length=40,unique=True)
      def __str__(self):
           return self.nombre
      class Meta:

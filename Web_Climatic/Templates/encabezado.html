@@ -1,15 +1,15 @@
 
 
+{% load static %}
 
-
-
+ <link  id="tema" rel="stylesheet" href="{% static '/css/card.css'%}" media="screen">
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-{% load static %}
+
 {% if user.is_authenticated %}
  {%if user.usuario.Estilo.ruta%}
 

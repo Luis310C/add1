@@ -26,15 +26,13 @@ class estilo(LoginRequiredMixin,CreateView):
    
 def climatic(request):
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=5da7d564f1b33d7e7dc3815b4b939d80'
-    if request.method == 'POST':
-         form = CityForm(request.POST)
-         form.save()
-    form = CityForm
+    
     ciudades = ciudad.objects.all()
     weather_data = []
     for c in ciudades:
          r = requests.get(url.format(c)).json()
          print(r)
+         if(r['cod']!='404'):
          city_weather = {
             'city' : c.nombre,
             'temperature' : r['main']['temp'],
@@ -48,7 +46,7 @@ def climatic(request):
         
 
     
-    context = {'weather_data' : weather_data, 'form' : form}
+    context = {'weather_data' : weather_data }
     return render(request, 'intex.html',context)
 
 class cambiarestilo(LoginRequiredMixin,UpdateView):
