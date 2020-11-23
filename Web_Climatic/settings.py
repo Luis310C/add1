@@ -26,7 +26,8 @@ SECRET_KEY = '+pbsf#b15#^yyb!tgn!p2u#dhsv*nkfg+t3opsjf9tw6kbk3es'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["34.122.193.54","gclimadjaproyect.site","www.gclimadjaproyect.site"]
+ALLOWED_HOSTS = []
+
 
 
 
@@ -66,7 +67,7 @@ ROOT_URLCONF = 'Web_Climatic.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/home/lacajabona/Web_Climatic/Web_Climatic/Templates'],
+        'DIRS': ['/home/luis310/Documentos/ProyectoDesarrolloWeb/Web_Climatic/Web_Climatic/Templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,6 +85,7 @@ WSGI_APPLICATION = 'Web_Climatic.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -91,11 +93,14 @@ DATABASES = {
         'USER':'postgres',  
         'PASSWORD':'31891752',
         'DATABASE_PORT':'5432',
-        'HOST':'127.0.0.1'
+        'HOST':'34.122.193.54'
+        #'HOST':'127.0.0.1'
+        
     }
 }
-
-
+#
+#'HOST':'34.122.193.54'
+# 'HOST':'127.0.0.1'
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -136,7 +141,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     
-    "/home/lacajabona/Web_Climatic/Web_Climatic/static"
+    "/home/luis310/Documentos/ProyectoDesarrolloWeb/Web_Climatic/Web_Climatic/static"
 ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
