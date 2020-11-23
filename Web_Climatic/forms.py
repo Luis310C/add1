@@ -3,7 +3,22 @@ from .models import articulo_Cientifico,Usuario
 from django.forms import Textarea
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm
-from .models import Estilo,Menu,Usuario
+from .models import Estilo,Menu,Usuario,ciudad
+
+
+
+
+
+
+
+class CityForm(forms.ModelForm):
+    class Meta:
+        model= ciudad
+        fields = ('nombre',)
+       
+
+
+
 
 
 class registroForm(UserCreationForm):

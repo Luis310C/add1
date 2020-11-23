@@ -6,6 +6,7 @@ from django.db import models
 from django.urls import reverse_lazy
 from .models import *
 from .forms import *
+import requests
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
@@ -23,7 +24,32 @@ class estilo(LoginRequiredMixin,CreateView):
      template_name='registration/estilo.html'
      success_url=reverse_lazy('login')
    
+def climatic(request):
+    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=5da7d564f1b33d7e7dc3815b4b939d80'
+    if request.method == 'POST':
+         form = CityForm(request.POST)
+         form.save()
+    form = CityForm
+    ciudades = ciudad.objects.all()
+    weather_data = []
+    for c in ciudades:
+         r = requests.get(url.format(c)).json()
+         print(r)
+         city_weather = {
+            'city' : c.nombre,
+            'temperature' : r['main']['temp'],
+            'description' : r['weather'][0]['description'],
+            'icon' : r['weather'][0]['icon'],
+            }  
+         weather_data.append(city_weather)
+         
+     
+     
+        
 
+    
+    context = {'weather_data' : weather_data, 'form' : form}
+    return render(request, 'intex.html',context)
 
 class cambiarestilo(LoginRequiredMixin,UpdateView):
      model=Usuario
@@ -125,6 +151,6 @@ def despedida(request):
 def ret(request):
      return render(request,'charts.html')
 
-def ciudad(request):
+def ciudadconsulta(request):
      return render(request,'predicciones.html')
 

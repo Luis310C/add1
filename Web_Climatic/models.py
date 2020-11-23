@@ -66,7 +66,15 @@ class articulo_Cientifico(models.Model):
      def save(self,*args,**kwargs):
           self.url=slugify(self.titulo)
           super().save(*args,**kwargs)
-  
+
+class ciudad(models.Model):
+     nombre=models.CharField(max_length=40)
+     def __str__(self):
+          return self.nombre
+     class Meta:
+          verbose_name_plural='ciudades'
+
+     
        
 
 
