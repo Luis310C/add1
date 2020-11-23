@@ -9,15 +9,16 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-
+{% load static %}
 {% if user.is_authenticated %}
  {%if user.usuario.Estilo.ruta%}
-<link  id="tema" rel="stylesheet" href="{{user.usuario.Estilo.ruta}}" media="screen">
+
+<link  id="tema" rel="stylesheet" href= "{% static '{{user.usuario.Estilo.ruta}}'%}" media="screen">
  {%else%}
- <link  id="tema" rel="stylesheet" href="/static/css/Lux/bootstrap.css" media="screen">
+ <link  id="tema" rel="stylesheet" href="{% static '/css/Lux/bootstrap.css'%}" media="screen">
  {%endif%}
 {% else %}
-<link  id="tema" rel="stylesheet" href="/static/css/Litera/bootstrap.css" media="screen">
+<link  id="tema" rel="stylesheet" href="{% static '/css/Litera/bootstrap.css'%}" media="screen">
 {% endif %} 
 
 
