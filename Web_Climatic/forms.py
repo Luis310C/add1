@@ -60,9 +60,9 @@ class cambio(forms.ModelForm):
     
     class Meta:
         model=Usuario
-        fields=['rol','Estilo']
+        fields=['Estilo']
         widgets={
-            'rol':forms.Select(attrs={"class":"form-control"}),
+            
             'Estilo':forms.Select(attrs={"class":"form-control"}),
 
 
