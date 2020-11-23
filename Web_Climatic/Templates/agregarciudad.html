@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %} Nueva Ciudad {%endblock%}
+{%block content%}
+{%if form.errors%}
+<div class="alert alert-info" role="alert">
+  Se ha producido un error
+ </div>
+{% endif %}
+<form action=""   class='was-validated' method="post" enctype="multipart/form-data">
+    {% load widget_tweaks%}
+    {%csrf_token%}
+    {{form.as_p}}
+    <br>
+    <br>
+<button class="btn btn-primary " type="submit" > registrar nuevo
+</button>
+<br>
+<br>
+<br>
+
+</form>
+{%endblock%}

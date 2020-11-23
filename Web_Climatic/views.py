@@ -17,6 +17,10 @@ class usuarioNuevo(CreateView):
      form_class=registroForm
      template_name='registration/register.html'
      success_url=reverse_lazy('login')
+class ciudadnueva(CreateView):
+     form_class=CityForm
+     template_name='agregarciudad.html'
+     success_url=reverse_lazy('climci')
 
 
 class estilo(LoginRequiredMixin,CreateView):
@@ -31,16 +35,18 @@ def climatic(request):
     weather_data = []
     for c in ciudades:
          r = requests.get(url.format(c)).json()
-         print(r)
-         if(r['cod']!='404'):
-         city_weather = {
-            'city' : c.nombre,
-            'temperature' : r['main']['temp'],
-            'description' : r['weather'][0]['description'],
-            'icon' : r['weather'][0]['icon'],
-            }  
-         weather_data.append(city_weather)
          
+         if(r['cod']!='404'):
+              city_weather = {
+               'city' : c.nombre,
+               'temperature' : r['main']['temp'],
+               'description' : r['weather'][0]['description'],
+               'icon' : r['weather'][0]['icon'],
+               }  
+              weather_data.append(city_weather)
+         
+         else:
+              print('error')
      
      
         

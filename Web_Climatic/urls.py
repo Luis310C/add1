@@ -33,7 +33,7 @@ urlpatterns = [
     path('eliminar/<slug:url>/',eliminar.as_view(),name='eliminar'),
     path('add/',addArticulo.as_view(),name='add'),
     path('clima/',clima),
-    path('p/',climatic),
+    path('p/',climatic,name='climci'),
     path('about/',about,name='acercade'),
     path('user/estilo',estilo.as_view(),name='personalizar'),
     path('user/edit',editprofile.as_view(),name='edit'),
@@ -43,5 +43,6 @@ urlpatterns = [
     path('cambiar/',cambiarestilo.as_view(),name='edit-estilo'),
     path('preguntas/',preguntas.as_view(),name='preguntas'),
     path('grafico/',ret,name='asc'),
+    path('agregarciudad/', ciudadnueva.as_view(),name='agregarciudad'),
     path('ciudades/',ciudadconsulta,name='porciudades')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

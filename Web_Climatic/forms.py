@@ -4,6 +4,7 @@ from django.forms import Textarea
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 from .models import Estilo,Menu,Usuario,ciudad
+import requests
 
 
 
@@ -15,6 +16,17 @@ class CityForm(forms.ModelForm):
     class Meta:
         model= ciudad
         fields = ('nombre',)
+    def clean(self):
+        cleaned_data=super(CityForm,self).clean()
+        nombre=cleaned_data.get('nombre')
+        if  nombre:
+            url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=5da7d564f1b33d7e7dc3815b4b939d80'
+            r = requests.get(url.format(nombre)).json()
+            if(r['cod']=='404'):
+                raise forms.ValidationError("esta ciudad no existe")
+        return cleaned_data
+        
+        
        
 
 
