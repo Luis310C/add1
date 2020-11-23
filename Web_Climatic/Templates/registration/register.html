@@ -10,7 +10,7 @@
   Antes de registrar una nueva cuenta debe cerrar
  </div>
  <div class='card'>
-<a href="{% url 'logout'%}?next={{request.path}}">Cerrar Sesion</a>
+<a class="btn btn-primary "href="{% url 'logout'%}?next={{request.path}}">Cerrar Sesion</a>
 </div>
 {% else %}
 
@@ -75,8 +75,7 @@
   $("label[for='id_last_name']").text("Apellido:");
   
   $(".form-group ul").text("");
-  $('#id_rol').addClass("form-control");
-  $('#id_estilo').addClass("form-control");
+ 
 </script>
 <br>
 <br>
