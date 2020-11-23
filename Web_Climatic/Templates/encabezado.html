@@ -13,7 +13,7 @@
 {% if user.is_authenticated %}
  {%if user.usuario.Estilo.ruta%}
 
-<link  id="tema" rel="stylesheet" href= "{% static '{{user.usuario.Estilo.ruta}}'%}" media="screen">
+<link  id="tema" rel="stylesheet" href= "{% static {{user.usuario.Estilo.ruta}}%}" media="screen">
  {%else%}
  <link  id="tema" rel="stylesheet" href="{% static '/css/Lux/bootstrap.css'%}" media="screen">
  {%endif%}
