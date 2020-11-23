@@ -24,7 +24,6 @@ from .views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('inicio/c/',despedida),
     path('',home,name='home'),
     path('articulos/',postlista.as_view(),name='/articulos'),
     path('articulos-all/',listaArticulosUsuarios.as_view(),name='articulos-all'),
@@ -34,16 +33,20 @@ urlpatterns = [
     path('add/',addArticulo.as_view(),name='add'),
     path('clima/',clima),
     path('p/',climatic,name='climci'),
+    path('eliminar-ciudad/<int:pk>',eliminarCiudad.as_view(),name='del-cit'),
     path('about/',about,name='acercade'),
     path('user/estilo',estilo.as_view(),name='personalizar'),
     path('user/edit',editprofile.as_view(),name='edit'),
     path('accounts/',include('django.contrib.auth.urls')),
     path('articulo/edit/<slug:url>/',Editarticulo.as_view(),name='edit'),
+    path('pregunta/edit/<int:pk>',editarPregunta.as_view(),name='edit-faq'),
+    path('pregunta/del/<int:pk>',eliminarPregunta.as_view(),name='del-faq'),
     path('password/',views.PasswordChangeView.as_view()),
     path('cambiar/',cambiarestilo.as_view(),name='edit-estilo'),
     path('preguntas/',preguntas.as_view(),name='preguntas'),
     path('grafico/',ret,name='asc'),
     path('agregarciudad/', ciudadnueva.as_view(),name='agregarciudad'),
     path('ciudades/',ciudadconsulta,name='porciudades'),
-    path('accounts/profile/',perfiles)
+    path('accounts/profile/',perfiles),
+    path('nueva-pregunta/',registrarPreguntas.as_view(),name='new-faq')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

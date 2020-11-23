@@ -22,7 +22,7 @@ class Menu(models.Model):
 class faqs(models.Model):
      Codigo_pregunta=models.BigAutoField(primary_key=True,null=False,blank=False)
      Pregunta=models.CharField(max_length=150,unique=True)
-     respuesta=models.TextField()
+     respuesta=RichTextField()
      def __str__(self):
           return self.Pregunta
 

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %} Eliminar {%endblock%}
+{%block content%}
+<h1>Eliminar ciudad</h1>
+<br></br>
+<h3>Ciudad:{{object.nombre}}</h3>
+<div class="form-group">
+<form action="" method="post" enctype="multipart/form-data">
+    
+    {%csrf_token%}
+    <div class="alert alert-warning" role="alert">
+        esta a punto de eliminar esta ciudad(esta accion no se puede deshacer)
+      </div>
+<input class="btn btn-secondary" type="submit" value="Eliminar"> 
+</form>
+</div>
+{%endblock%}

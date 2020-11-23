@@ -21,18 +21,36 @@
     <div class="card">
         <div class="card-header" role="tab" >
           <h5 class="mb-0">
-            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseT{{faq.Codigo_pregunta}}" aria-expanded="false" aria-controls="collapseTcollapseT{{faq.Codigo_pregunta}}" >{{faq.Pregunta}}</a>
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseT{{faq.Codigo_pregunta}}" aria-expanded="false" aria-controls="collapseTcollapseT{{faq.Codigo_pregunta}}" >{{faq.Pregunta}}</a>{% if user.is_authenticated %}<a class="btn btn-sm  btn-primary" href="{% url 'edit-faq' faq.pk %}"> editar</a><a class="btn btn-sm  btn-danger" href="{% url 'del-faq' faq.pk %}"> eliminar</a>{%endif%}
           </h5>
         </div>
         <div id="collapseT{{faq.Codigo_pregunta}}" class="collapse" role="tabpanel" aria-labelledby="headingThree">
           <div class="card-body">
-            {{faq.respuesta}}
+            {{faq.respuesta|safe}}
           </div>
         </div>
       </div>
     </div>
     {%endfor%}      
-
+    <span class="current">
+      Pagina {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+  </span>     
+     <nav >
+              <ul class="pagination">
+               
+                {% if page_obj.has_previous %}
+                <li class="page-item">  <a  class="page-link" href="?page=1">&laquo; Primera</a></li>
+                  <li class="page-item">  <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+                {% endif %}
+        
+                
+        
+                {% if page_obj.has_next %}
+                  <li class="page-item"> <a  class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li> 
+                  <li class="page-item"> <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">ultima &raquo;</a></li> 
+                {% endif %}
+              </ul>
+            </nav>
 
 
   </div>

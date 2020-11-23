@@ -46,7 +46,7 @@
                          
                              <div class="col-sm">
                                 <div class="card border-primary mb-3" style="max-width: 20rem;">
-                                   <div class="card-header"> <img  src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">{{ city_weather.city }}</div>
+                                   <div class="card-header"> <img  src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">{{ city_weather.city }} <a  class= "btn btn-sm  btn-primary" href="{% url 'del-cit' city_weather.codigo %}">eliminar</a></div>
                                     <div class="card-body">
                                       <h4 class="card-title">{{ city_weather.temperature }}° F</h4>
                                       <p class="card-text">{{ city_weather.description }}.</p>

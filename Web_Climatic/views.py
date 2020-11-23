@@ -23,10 +23,17 @@ class ciudadnueva(LoginRequiredMixin,CreateView):
      success_url=reverse_lazy('climci')
 
 
+
 class estilo(LoginRequiredMixin,CreateView):
      form_class=registrar
      template_name='registration/estilo.html'
      success_url=reverse_lazy('login')
+
+class eliminarCiudad(DeleteView,LoginRequiredMixin):
+     model=ciudad
+     template_name='del-ciudad.html'
+     fields='__all__'
+     success_url=reverse_lazy('climci')
    
 def climatic(request):
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=5da7d564f1b33d7e7dc3815b4b939d80'
@@ -39,6 +46,7 @@ def climatic(request):
          if(r['cod']!='404'):
               city_weather = {
                'city' : c.nombre,
+               'codigo': c.pk,
                'temperature' : r['main']['temp'],
                'description' : r['weather'][0]['description'],
                'icon' : r['weather'][0]['icon'],
@@ -68,12 +76,31 @@ class editprofile(LoginRequiredMixin,UpdateView):
      def get_object(self):
           return self.request.user
 
+class registrarPreguntas(LoginRequiredMixin,CreateView):
+     model=faqs
+     template_name='preguntas.html'
+     fields='__all__'
+     success_url=reverse_lazy('preguntas')
+
+class editarPregunta(LoginRequiredMixin,UpdateView):
+     model=faqs
+     template_name='preguntas.html'
+     fields='__all__'
+     success_url=reverse_lazy('preguntas')
+
+class eliminarPregunta(LoginRequiredMixin,DeleteView):
+     model=faqs
+     template_name='del-preguntas.html'
+     fields='__all__'
+     success_url=reverse_lazy('preguntas')
+
 class preguntas(ListView):
      queryset=faqs.objects.all()
      template_name='faqs.html'
+     paginate_by=10
 
 def perfiles(request):
-     return render(request,'accounts_profile.html')
+     return render(request,'registration/accounts_profile.html')
 
 class postlista(ListView): 
      queryset=articulo_Cientifico.objects.filter(estado=1)
@@ -143,11 +170,6 @@ def about(request):
     
     
      return render(request,'about.html')
-
-
-def despedida(request):
-     
-     return render(request,'vista1.html')
 
 def ret(request):
      return render(request,'charts.html')

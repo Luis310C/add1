@@ -1,0 +1,19 @@
+
+{% extends "base.html" %}
+{% block title %} Añadir o Editar Preguntas Frecuentes{%endblock%}
+{% block content %}
+<form action=""   class='was-validated' method="post" enctype="multipart/form-data">
+    {% load widget_tweaks%}
+    {%csrf_token%}
+    {{form.as_p}}
+    {{ form.media }}
+    <br>
+    <br>
+<button class="btn btn-primary " type="submit" > Guardar
+</button>
+<br>
+<br>
+<br>
+
+</form>
+{%endblock%}
