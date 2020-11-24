@@ -53,5 +53,8 @@ urlpatterns = [
     path('causa/',causa,name='causa'),
     path('efecto/',efecto,name='efecto'),
     path('user/menu',menu.as_view(),name='menu'),
-    path('tabla/',usuariostodos.as_view())
+    path('tabla/',usuariostodos.as_view()),
+    path('listamenu/',elementosdeMenu.as_view(),name='listamenu'),
+    path('editmenu/<int:pk>',editElementoMenu.as_view(),name='editmenu'),
+    path('crearopcionmenu/',creaElementoMenu.as_view(),name='addmenu')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

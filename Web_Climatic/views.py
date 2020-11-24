@@ -196,6 +196,20 @@ class usuariostodos(LoginRequiredMixin,ListView):
      model=Usuario
      template_name='tabla1.html'
 
+class elementosdeMenu(LoginRequiredMixin,ListView):
+     model=OpcionesMenu
+     template_name='elementosmenu.html'
+class editElementoMenu(LoginRequiredMixin,UpdateView):
+     model=OpcionesMenu
+     fields='__all__'
+     template_name='editelemento.html'
+class creaElementoMenu(LoginRequiredMixin,CreateView):
+     model=OpcionesMenu
+     fields='__all__'
+     template_name='editelemento.html'
+
+
+
     
 
 

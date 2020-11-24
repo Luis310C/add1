@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %} elementos menu {%endblock%}
+{% block content %}
+
+
+{%for elemento in object_list%}
+<div class="card mb-4">
+{{elemento.Opcion}}
+<a href="{% url 'editmenu' elemento.pk%}" class="btn btn-primary btn-sm active">Editar Opcion &rarr;</a>
+</div>
+{%endfor%}      
+{%endblock%}
