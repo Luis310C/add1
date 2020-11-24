@@ -81,7 +81,13 @@ class registrart(forms.ModelForm):
 
 
         }
-
+class roleditar(forms.ModelForm):
+    class Meta:
+        model=Menu
+        fields=['Nombre_Menu']
+        widgets={
+            'Nombre_Menu':forms.TextInput(attrs={'class':"form-control"})
+        }
 
 class cambio(forms.ModelForm):
     

@@ -60,6 +60,9 @@ urlpatterns = [
     path('eliminarmenu/<int:pk>',eliminarElementoMenu.as_view(),name='delmenu'),
     path('mediares/',recursos,name='recursosmultimedia'),
     path('listarUsuario/',listarUsuario.as_view(),name='listarusuario'),
-    path('contacto/',contacto,name='contacto')
+    path('contacto/',contacto,name='contacto'),
+    path('listaroles/',listarRoles.as_view(),name='listaroles'),
+    path('editarrol/<int:pk>',editarRoles.as_view(),name='editarroles'),
+    path('createrol/',crearRol.as_view(),name='addnewrol')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

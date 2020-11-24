@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %} Roles {%endblock%}
+
+
+{% block content %}
+
+<div class="container">
+
+          
+  <h1 class="mt-4 mb-3">Roles
+   
+  </h1>
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">inicio</a>
+    </li>
+    <li class="breadcrumb-item active">Roles</li>
+  </ol>
+
+  <div class="row">
+
+  
+    <div class="col-md-8">
+
+     
+      {%for articulo in object_list%}
+<div class="card mb-4">
+       
+        <div class="card-body">
+          <h2 class="card-title">{{articulo.Nombre_Menu}}</h2>
+          
+          <a href="{% url 'editarroles'  articulo.pk%}" class="btn btn-primary btn-sm active">editar &rarr;</a> 
+        </div>
+        
+      </div>
+      
+{%endfor%}      
+
+    </div>
+
+
+
+     
+ 
+
+
+    </div>
+
+    
+ 
+
+
+</div>
+{% endblock %}

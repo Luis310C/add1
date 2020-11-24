@@ -225,6 +225,18 @@ def contacto(request):
      return render(request,'contacto.html')
 
 
-    
+class listarRoles(ListView,LoginRequiredMixin):
+     model=Menu
+     template_name='listaroles.html'
+
+class editarRoles(LoginRequiredMixin,UpdateView):
+     model=Menu
+     form_class=roleditar
+     template_name='editarrol.html'
+
+class crearRol(LoginRequiredMixin,CreateView):
+     model=Menu
+     form_class=roleditar
+     template_name='editarrol.html'
 
 
