@@ -205,18 +205,18 @@ class menu(LoginRequiredMixin,ListView):
      def get_queryset(self):
         return OpcionesMenu.objects.filter(Codigo_menu__gte=self.request.user.usuario.rol.Codigo_menu)
 
-class usuariostodos(LoginRequiredMixin,SingleTableView,UserPassesTestMixin):
+class usuariostodos(UserPassesTestMixin,LoginRequiredMixin,SingleTableView):
      model=User
+     template_name='tabla1.html'
      def test_func(self):
           return self.request.user.usuario.rol.Codigo_menu==1
-     template_name='tabla1.html'
 
-class elementosdeMenu(LoginRequiredMixin,ListView,UserPassesTestMixin):
+class elementosdeMenu(UserPassesTestMixin,LoginRequiredMixin,ListView):
      model=OpcionesMenu
      def test_func(self):
           return self.request.user.usuario.rol.Codigo_menu==1
      template_name='elementosmenu.html'
-class editElementoMenu(LoginRequiredMixin,UpdateView,UserPassesTestMixin):
+class editElementoMenu(UserPassesTestMixin,LoginRequiredMixin,UpdateView):
      model=OpcionesMenu
      fields='__all__'
      def test_func(self):
@@ -225,10 +225,10 @@ class editElementoMenu(LoginRequiredMixin,UpdateView,UserPassesTestMixin):
 class creaElementoMenu(LoginRequiredMixin,CreateView,UserPassesTestMixin):
      model=OpcionesMenu
      fields='__all__'
+     template_name='crearelementomenu.html'
      def test_func(self):
           return self.request.user.usuario.rol.Codigo_menu==1
-     template_name='crearelementomenu.html'
-class eliminarElementoMenu(LoginRequiredMixin,DeleteView,UserPassesTestMixin):
+class eliminarElementoMenu(UserPassesTestMixin,LoginRequiredMixin,DeleteView):
      model=OpcionesMenu
      template_name='deleteopcionmenu.html'
      def test_func(self):
@@ -236,7 +236,7 @@ class eliminarElementoMenu(LoginRequiredMixin,DeleteView,UserPassesTestMixin):
      fields='__all__'
      success_url=reverse_lazy('listamenu')
 
-class listarUsuario(LoginRequiredMixin,ListView,UserPassesTestMixin):
+class listarUsuario(UserPassesTestMixin,LoginRequiredMixin,ListView):
      model=Usuario
      def test_func(self):
           return self.request.user.usuario.rol.Codigo_menu==1
@@ -254,7 +254,7 @@ class listarRoles(ListView,LoginRequiredMixin,UserPassesTestMixin):
           return self.request.user.usuario.rol.Codigo_menu<=2
      template_name='listaroles.html'
 
-class editarRoles(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
+class editarRoles(UserPassesTestMixin,LoginRequiredMixin,UpdateView):
      model=Menu
      form_class=roleditar
      def test_func(self):
@@ -262,7 +262,7 @@ class editarRoles(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
     
      template_name='editarrol.html'
 
-class crearRol(LoginRequiredMixin,UserPassesTestMixin,CreateView):
+class crearRol(UserPassesTestMixin,LoginRequiredMixin,CreateView):
      model=Menu
      form_class=roleditar
      def test_func(self):
