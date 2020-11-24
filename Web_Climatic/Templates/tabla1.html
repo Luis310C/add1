@@ -4,5 +4,15 @@
 
 {% block title %}Cambio Climatico{%endblock%}
        {%block content%}
+       <script>
+              $(document).ready(function(){
+                     $('table').addClass('table');  
+                   
+                      
+                     $('.table-container').addClass('table-responsive');  
+                     
+              })
+             </script>
         {% render_table object_list %}
+      
        {%endblock%}

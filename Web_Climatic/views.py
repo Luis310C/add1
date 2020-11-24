@@ -8,7 +8,7 @@ from .models import *
 from .forms import *
 import requests
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django_tables2 import SingleTableView
 from django.core.mail  import send_mail
@@ -179,15 +179,9 @@ def vistaTabla(request):
 
 
 def home(request):
-     
-    
-
      return render(request,'home.html')
 
 def about(request):
-
-    
-    
      return render(request,'about.html')
 
 def ret(request):
@@ -211,29 +205,41 @@ class menu(LoginRequiredMixin,ListView):
      def get_queryset(self):
         return OpcionesMenu.objects.filter(Codigo_menu__gte=self.request.user.usuario.rol.Codigo_menu)
 
-class usuariostodos(LoginRequiredMixin,SingleTableView):
+class usuariostodos(LoginRequiredMixin,SingleTableView,UserPassesTestMixin):
      model=User
+     def test_func(self):
+          return self.request.user.usuario.rol.Codigo_menu==1
      template_name='tabla1.html'
 
-class elementosdeMenu(LoginRequiredMixin,ListView):
+class elementosdeMenu(LoginRequiredMixin,ListView,UserPassesTestMixin):
      model=OpcionesMenu
+     def test_func(self):
+          return self.request.user.usuario.rol.Codigo_menu==1
      template_name='elementosmenu.html'
-class editElementoMenu(LoginRequiredMixin,UpdateView):
+class editElementoMenu(LoginRequiredMixin,UpdateView,UserPassesTestMixin):
      model=OpcionesMenu
      fields='__all__'
+     def test_func(self):
+          return self.request.user.usuario.rol.Codigo_menu==1
      template_name='editelemento.html'
-class creaElementoMenu(LoginRequiredMixin,CreateView):
+class creaElementoMenu(LoginRequiredMixin,CreateView,UserPassesTestMixin):
      model=OpcionesMenu
      fields='__all__'
+     def test_func(self):
+          return self.request.user.usuario.rol.Codigo_menu==1
      template_name='crearelementomenu.html'
-class eliminarElementoMenu(LoginRequiredMixin,DeleteView):
+class eliminarElementoMenu(LoginRequiredMixin,DeleteView,UserPassesTestMixin):
      model=OpcionesMenu
      template_name='deleteopcionmenu.html'
+     def test_func(self):
+          return self.request.user.usuario.rol.Codigo_menu==1
      fields='__all__'
      success_url=reverse_lazy('listamenu')
 
-class listarUsuario(LoginRequiredMixin,ListView):
+class listarUsuario(LoginRequiredMixin,ListView,UserPassesTestMixin):
      model=Usuario
+     def test_func(self):
+          return self.request.user.usuario.rol.Codigo_menu==1
      template_name='listausuario.html'
 
 def recursos(request):
@@ -242,18 +248,25 @@ def contacto(request):
      return render(request,'contacto.html')
 
 
-class listarRoles(ListView,LoginRequiredMixin):
+class listarRoles(ListView,LoginRequiredMixin,UserPassesTestMixin):
      model=Menu
+     def test_func(self):
+          return self.request.user.usuario.rol.Codigo_menu<=2
      template_name='listaroles.html'
 
-class editarRoles(LoginRequiredMixin,UpdateView):
+class editarRoles(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
      model=Menu
      form_class=roleditar
+     def test_func(self):
+          return self.request.user.usuario.rol.Codigo_menu<=2
+    
      template_name='editarrol.html'
 
-class crearRol(LoginRequiredMixin,CreateView):
+class crearRol(LoginRequiredMixin,UserPassesTestMixin,CreateView):
      model=Menu
      form_class=roleditar
+     def test_func(self):
+          return self.request.user.usuario.rol.Codigo_menu==1
      template_name='editarrol.html'
 
 

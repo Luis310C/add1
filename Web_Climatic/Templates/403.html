@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %} Prohibido{%endblock%}
+
+
+{% block content %}
+<meta http-equiv="refresh" content="4;url={% url 'home'%}"> 
+
+<div class="alert alert-warning" role="alert">
+<h1> Usuario :{{user.username}} </h1>
+<h2>no cuenta con permisos suficientes</h2>
+</div>
+{%endblock%}
