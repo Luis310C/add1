@@ -221,7 +221,8 @@ class listarUsuario(LoginRequiredMixin,ListView):
 
 def recursos(request):
      return render(request,'recursosmultimedia.html')
-
+def contacto(request):
+     return render(request,'contacto.html')
 
 
     

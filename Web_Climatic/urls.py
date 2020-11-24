@@ -59,6 +59,7 @@ urlpatterns = [
     path('crearopcionmenu/',creaElementoMenu.as_view(),name='addmenu'),
     path('eliminarmenu/<int:pk>',eliminarElementoMenu.as_view(),name='delmenu'),
     path('mediares/',recursos,name='recursosmultimedia'),
-    path('listarUsuario/',listarUsuario.as_view(),name='listarusuario')
+    path('listarUsuario/',listarUsuario.as_view(),name='listarusuario'),
+    path('contacto/',contacto,name='contacto')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
