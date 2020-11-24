@@ -248,7 +248,7 @@ def contacto(request):
      return render(request,'contacto.html')
 
 
-class listarRoles(ListView,LoginRequiredMixin,UserPassesTestMixin):
+class listarRoles(UserPassesTestMixin,ListView,LoginRequiredMixin):
      model=Menu
      def test_func(self):
           return self.request.user.usuario.rol.Codigo_menu<=2
