@@ -34,7 +34,7 @@ urlpatterns = [
     path('clima/',climatic,name='climci'),
     path('eliminar-ciudad/<int:pk>',eliminarCiudad.as_view(),name='del-cit'),
     path('about/',about,name='acercade'),
-    path('user/estilo',estilo.as_view(),name='personalizar'),
+    path('user/estilo/<int:pk>',estilo.as_view(),name='personalizar'),
     path('user/edit',editprofile.as_view(),name='edit'),
     path('accounts/',include('django.contrib.auth.urls')),
     path('articulo/edit/<slug:url>/',Editarticulo.as_view(),name='edit'),

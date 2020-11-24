@@ -24,7 +24,7 @@ class ciudadnueva(LoginRequiredMixin,CreateView):
 
 
 
-class estilo(LoginRequiredMixin,CreateView):
+class estilo(LoginRequiredMixin,UpdateView):
      form_class=registrar
      template_name='registration/estilo.html'
      success_url=reverse_lazy('login')
