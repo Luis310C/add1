@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Crear opcion Menu {%endblock%}
+{%block titulo%}
+
+{%endblock%} 
+{%block content%}
+<style>
+
+    html,
+    body {
+      height: 100%;
+    }
+    .form-signin {
+      width: 100%;
+      max-width: 330px;
+      padding: 15px;
+      margin: 0 auto;
+    }
+    
+    .form-signin .form-control {
+      position: relative;
+      box-sizing: border-box;
+      height: auto;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .form-signin .form-control:focus {
+      z-index: 2;
+    }
+    
+    
+        </style>
+        <br>
+        <br>
+        <br>
+      
+
+      
+        <div class="alert alert-warning" role="alert">
+            Esta intentando agregar una nueva opcion al menu esta opcion esta reservada a administradores
+            sino cuenta con acceso a documentacion sobre el diseño de la aplicacion y los nombres reservados de las urls abstengase
+            
+          </div>
+
+ <div class="card  border-secondary  mb-3 mx-auto" style = "max-width: 30rem;">
+  <br>
+  <br>
+  
+  <h1 class="h3 mb-3 font-weight-normal text-center card-title">Opcion menu</h1>
+<div class="form-group form-signin">
+<form action=""   class='was-validated' method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+
+    <br>
+    <br>
+<input class="btn btn-primary" type="submit" value="Guardar Cambios"> 
+
+<br>
+<br>
+<br>
+
+</form>
+</div></div>
+{%endblock%}

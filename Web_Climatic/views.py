@@ -206,8 +206,12 @@ class editElementoMenu(LoginRequiredMixin,UpdateView):
 class creaElementoMenu(LoginRequiredMixin,CreateView):
      model=OpcionesMenu
      fields='__all__'
-     template_name='editelemento.html'
-
+     template_name='crearelementomenu.html'
+class eliminarElementoMenu(LoginRequiredMixin,DeleteView):
+     model=OpcionesMenu
+     template_name='deleteopcionmenu.html'
+     fields='__all__'
+     success_url=reverse_lazy('listamenu')
 
 
     
