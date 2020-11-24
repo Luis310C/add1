@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %} Establecer Estilo y rol {%endblock%}
+{% block title %} Establecer Estilo y rol usuario {%endblock%}
 {%block titulo%}
 
 {%endblock%} 
@@ -10,7 +10,7 @@
  <div class="card  border-secondary  mb-3 mx-auto" style = "max-width: 28rem;">
   <br>
   <br>
-  <h1 class="h3 mb-3 font-weight-normal text-center card-title">Registrar</h1>
+  <h1 class="h3 mb-3 font-weight-normal text-center card-title">Establecer {{object.Nombre}}</h1>
 <div class="form-group form-signin">
 <form action=""   class='was-validated' method="post" enctype="multipart/form-data">
     {% load widget_tweaks%}
@@ -18,7 +18,7 @@
     {{form.as_p}}
     <br>
     <br>
-<button class="btn btn-primary " type="submit" > registrar nuevo
+<button class="btn btn-primary " type="submit" > establecer para este perfil
 </button>
 <br>
 <br>

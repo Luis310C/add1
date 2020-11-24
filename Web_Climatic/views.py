@@ -10,6 +10,7 @@ import requests
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
+from django_tables2 import SingleTableView
 
 
 
@@ -24,8 +25,9 @@ class ciudadnueva(LoginRequiredMixin,CreateView):
 
 
 
-class estilo(LoginRequiredMixin,UpdateView):
-     form_class=registrar
+class editarperfiluser(LoginRequiredMixin,UpdateView):
+     model=Usuario
+     form_class=registrart
      template_name='registration/estilo.html'
      success_url=reverse_lazy('login')
 
@@ -119,7 +121,7 @@ class eliminar(LoginRequiredMixin,DeleteView):
      template_name='deleteArticulo.html'
      slug_field ='url'
      slug_url_kwarg = 'url'
-     success_url=reverse_lazy('/articulos')
+     success_url=reverse_lazy('articulos')
      
 
 class ArticleDetailView(DetailView):
@@ -134,7 +136,7 @@ class addArticulo(LoginRequiredMixin,CreateView):
      template_name='formulario.html'
      form_class=formulario1
      #fields='__all__'
-     success_url=reverse_lazy('/articulos')
+     success_url=reverse_lazy('articulos')
 
 class Editarticulo(LoginRequiredMixin,UpdateView):
      model=articulo_Cientifico
@@ -142,7 +144,7 @@ class Editarticulo(LoginRequiredMixin,UpdateView):
      slug_field ='url'
      slug_url_kwarg ='url'
      form_class=formulario3
-     success_url=reverse_lazy('/articulos')
+     success_url=reverse_lazy('articulos')
 
 
 
@@ -150,7 +152,7 @@ class addUsuario(CreateView):
       model=Usuario
       template_name='usuarios.html'
       form_class=formulario2
-      success_url=reverse_lazy('/articulos')
+      success_url=reverse_lazy('articulos')
 
 def triple(request):
      return render(request,'Datos.html')
@@ -192,8 +194,8 @@ class menu(LoginRequiredMixin,ListView):
      def get_queryset(self):
         return OpcionesMenu.objects.filter(Codigo_menu__gte=self.request.user.usuario.rol.Codigo_menu)
 
-class usuariostodos(LoginRequiredMixin,ListView):
-     model=Usuario
+class usuariostodos(LoginRequiredMixin,SingleTableView):
+     model=User
      template_name='tabla1.html'
 
 class elementosdeMenu(LoginRequiredMixin,ListView):
@@ -212,6 +214,14 @@ class eliminarElementoMenu(LoginRequiredMixin,DeleteView):
      template_name='deleteopcionmenu.html'
      fields='__all__'
      success_url=reverse_lazy('listamenu')
+
+class listarUsuario(LoginRequiredMixin,ListView):
+     model=Usuario
+     template_name='listausuario.html'
+
+def recursos(request):
+     return render(request,'recursosmultimedia.html')
+
 
 
     

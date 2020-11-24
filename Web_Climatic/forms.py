@@ -68,13 +68,13 @@ class edit_profile(UserChangeForm):
   
        
 
-class registrar(forms.ModelForm):
+class registrart(forms.ModelForm):
     
     class Meta:
         model=Usuario
-        fields=('Nombre','rol','Estilo')
+        fields=('rol','Estilo')
         widgets={
-            'Nombre':forms.Select(attrs={"class":"form-control"}),
+            
             'rol':forms.Select(attrs={"class":"form-control"}),
             'Estilo':forms.Select(attrs={"class":"form-control"}),
 

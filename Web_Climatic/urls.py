@@ -34,7 +34,7 @@ urlpatterns = [
     path('clima/',climatic,name='climci'),
     path('eliminar-ciudad/<int:pk>',eliminarCiudad.as_view(),name='del-cit'),
     path('about/',about,name='acercade'),
-    path('user/estilo/<int:pk>',estilo.as_view(),name='personalizar'),
+    path('user/editperf/<int:pk>',editarperfiluser.as_view(),name='personalizar'),
     path('user/edit',editprofile.as_view(),name='edit'),
     path('accounts/',include('django.contrib.auth.urls')),
     path('articulo/edit/<slug:url>/',Editarticulo.as_view(),name='edit'),
@@ -53,9 +53,12 @@ urlpatterns = [
     path('causa/',causa,name='causa'),
     path('efecto/',efecto,name='efecto'),
     path('user/menu',menu.as_view(),name='menu'),
-    path('tabla/',usuariostodos.as_view()),
+    path('tabla/',usuariostodos.as_view(),name='tabla1'),
     path('listamenu/',elementosdeMenu.as_view(),name='listamenu'),
     path('editmenu/<int:pk>',editElementoMenu.as_view(),name='editmenu'),
     path('crearopcionmenu/',creaElementoMenu.as_view(),name='addmenu'),
-    path('eliminarmenu/<int:pk>',eliminarElementoMenu.as_view(),name='delmenu')
+    path('eliminarmenu/<int:pk>',eliminarElementoMenu.as_view(),name='delmenu'),
+    path('mediares/',recursos,name='recursosmultimedia'),
+    path('listarUsuario/',listarUsuario.as_view(),name='listarusuario')
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
