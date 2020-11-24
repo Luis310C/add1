@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %} Prohibido{%endblock%}
+
+
+{% block content %}
+<meta http-equiv="refresh" content="4;url={% url 'home'%}"> 
+
+<div class="alert alert-danger" role="alert">
+
+<h2>Esta pagina no existe</h2>
+</div>
+{%endblock%}
