@@ -152,3 +152,10 @@ class formulario2(forms.ModelForm):
             'Estilo':forms.Select(attrs={"class":"form-control"}),
             
         }
+
+
+class enviarMensaje(forms.Form):
+      email=forms.EmailField(label='Correo Electronico',widget=forms.EmailInput(attrs={"class":"form-control"}))
+      nombre=forms.CharField(label='Nombre',max_length=100,widget=forms.TextInput(attrs={"class":"form-control"}))
+      mensaje=forms.CharField(label='Mensaje',max_length=100,widget=forms.Textarea(attrs={"class":"form-control"}))
+      

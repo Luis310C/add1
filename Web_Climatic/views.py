@@ -11,6 +11,23 @@ from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django_tables2 import SingleTableView
+from django.core.mail  import send_mail
+
+
+def contactar(request):
+     if request.method=='GET':
+          form=enviarMensaje()
+          
+     else:
+          form=enviarMensaje(request.POST)
+          if form.is_valid():
+               form_email=form.cleaned_data['email']
+               form_subject=form.cleaned_data['nombre']
+               form_mensaje=form.cleaned_data['mensaje']
+               send_mail(form_subject,form_mensaje,form_email,['luisacajabon310@gmail.com',form_email])
+               form=enviarMensaje()
+     
+     return render(request,'contacto.html',{'form':form})
 
 
 
