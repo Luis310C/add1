@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'ckeditor',
+    'django_tables2',
     'django_bleach',
      'Web_Climatic',
 ]

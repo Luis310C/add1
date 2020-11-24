@@ -32,21 +32,19 @@
         
 
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Blog
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'articulos'  %}" >
+            Articulos
           </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-            <a class="dropdown-item" href="/articulos">Articulos</a>
-           </div>
+         
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Otras Paginas
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-            <a class="dropdown-item" href="#">Predicciones</a>
-            <a class="dropdown-item" href="#">Modelos</a>
+            <a class="dropdown-item" href="{% url 'porciudades'  %}">Grafico modelo por ciudad</a>
+            <a class="dropdown-item" href="{% url 'climci'  %}">Clima por ciudades</a>
             <a class="dropdown-item" href="{% url 'preguntas'%}">FAQ</a>
             <a class="dropdown-item" href="#">Documentacion y referencias</a>
             <a class="dropdown-item" href="#">Impacto economico</a>

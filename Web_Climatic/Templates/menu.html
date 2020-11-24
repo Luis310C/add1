@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Cambio Climatico{%endblock%}
+
+{% block content %}
+<div class="container">
+
+
+    <h1 class="mt-4 mb-3">Menu personal
+      <small>{{user.username}}</small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="">Menu</a>
+        
+      </li>
+      <li class="breadcrumb-item active">{{user.usuario.rol}}</li>
+    </ol>
+
+   
+
+
+
+
+  
+  
+
+
+
+
+    <div class="row">
+      
+      <div class="col-lg-3 mb-4">
+        <div class="list-group">
+          
+          {%if object_list%}
+          {% for b in object_list  %} 
+         <a href="{% url b.nombre %}" class="list-group-item">{{b.Opcion}}</a>
+          {% endfor %}
+          {% else %}
+          <div class='alert-danger'>nos se detecta ningun objeto</div>
+          {%endif%}
+        </div>
+      </div>
+     
+      <div class="col-lg-9 mb-4">
+        <h2>Aclaracion</h2>
+        <p>El sistema de personalizacion de menus funciona por medio de la gestion de permisos escalonados
+          la sesion actual corresponde a un usuario con Rol {{user.usuario.rol}}  si considera que el rol no corresponde a los permisos de su usuario comuniquese con el staff</p>
+      </div>
+    </div>
+   
+
+  </div>
+
+{%endblock%}

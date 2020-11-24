@@ -3,6 +3,8 @@ from ckeditor.fields import RichTextField
 from django.utils.text import slugify
 from .settings import STATIC_URL
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 
@@ -30,6 +32,7 @@ class faqs(models.Model):
 class OpcionesMenu(models.Model):
      Codigo_Opcion=models.BigIntegerField(primary_key=True)
      Opcion=models.CharField(max_length=35)
+     nombre=models.TextField()
      Codigo_menu=models.ForeignKey(Menu,on_delete=models.CASCADE)
 
 class Estilo(models.Model):
@@ -42,8 +45,17 @@ class Estilo(models.Model):
 class Usuario(models.Model):
      
       Nombre=models.OneToOneField(User,null=True,on_delete=models.CASCADE)
-      rol=models.ForeignKey(Menu,on_delete=models.CASCADE)
-      Estilo=models.ForeignKey(Estilo,on_delete=models.CASCADE)
+      rol=models.ForeignKey(Menu,on_delete=models.CASCADE,default=Menu.objects.filter(Codigo_menu=3).values('Codigo_menu'))
+      Estilo=models.ForeignKey(Estilo,on_delete=models.CASCADE,default=Estilo.objects.filter(Codigo_estilo=1).values('Codigo_estilo'))
+      
+      @receiver(post_save, sender=User)
+      def update_profile_signal(sender, instance, created, **kwargs):
+        if created:
+              
+             Usuario.objects.create(Nombre=instance)
+             
+        instance.usuario.save()
+      
       def __str__(self):
         return self.Nombre.username
 

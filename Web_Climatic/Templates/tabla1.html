@@ -1,0 +1,13 @@
+
+{% load render_table from django_tables2 %}
+<!doctype html>
+<html>
+    <head>
+        <title>Lista de usuarios registrados </title>
+    </head>
+    
+    <body>
+       
+        {% render_table object_list %}
+    </body>
+</html>

@@ -186,4 +186,16 @@ def efecto(request):
 def  evidencia(request):
      return render(request,'evidencia.html')
 
+class menu(LoginRequiredMixin,ListView):
+     model=OpcionesMenu
+     template_name='menu.html'
+     def get_queryset(self):
+        return OpcionesMenu.objects.filter(Codigo_menu__gte=self.request.user.usuario.rol.Codigo_menu)
+
+class usuariostodos(LoginRequiredMixin,ListView):
+     model=Usuario
+     template_name='tabla1.html'
+
+    
+
 

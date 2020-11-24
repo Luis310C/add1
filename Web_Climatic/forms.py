@@ -132,6 +132,8 @@ class formulario3(forms.ModelForm):
             'descripcion':Textarea(attrs={"class":"form-control","rows":"20"})
         }
 class formulario2(forms.ModelForm):
+    
+
     class Meta:
         model=Usuario
         fields=('Nombre','rol','Estilo')

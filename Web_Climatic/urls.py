@@ -25,7 +25,7 @@ from .views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home,name='home'),
-    path('articulos/',postlista.as_view(),name='/articulos'),
+    path('articulos/',postlista.as_view(),name='articulos'),
     path('articulos-all/',listaArticulosUsuarios.as_view(),name='articulos-all'),
     path('articulo/<slug:url>/',ArticleDetailView.as_view(),name='article-details'),
     path('registrar/',usuarioNuevo.as_view(),name='register'),
@@ -51,5 +51,7 @@ urlpatterns = [
     path('triple/',triple,name='triple'),
     path('evidencia/',evidencia,name='evidencia'),
     path('causa/',causa,name='causa'),
-    path('efecto/',efecto,name='efecto')
+    path('efecto/',efecto,name='efecto'),
+    path('user/menu',menu.as_view(),name='menu'),
+    path('tabla/',usuariostodos.as_view())
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
