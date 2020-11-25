@@ -203,7 +203,7 @@ class menu(LoginRequiredMixin,ListView):
      model=OpcionesMenu
      template_name='menu.html'
      def get_queryset(self):
-        return OpcionesMenu.objects.filter(Codigo_menu__gte=self.request.user.usuario.rol.Codigo_menu)
+        return OpcionesMenu.objects.filter(Codigo_menu__gte=self.request.user.usuario.rol.Codigo_menu).order_by('Opcion')
 
 class usuariostodos(UserPassesTestMixin,LoginRequiredMixin,SingleTableView):
      model=User
@@ -219,6 +219,7 @@ class elementosdeMenu(UserPassesTestMixin,LoginRequiredMixin,ListView):
 class editElementoMenu(UserPassesTestMixin,LoginRequiredMixin,UpdateView):
      model=OpcionesMenu
      fields='__all__'
+     success_url=reverse_lazy('listamenu')
      def test_func(self):
           return self.request.user.usuario.rol.Codigo_menu==1
      template_name='editelemento.html'
